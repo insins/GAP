@@ -1,0 +1,7 @@
+node_modules
+smarty_compile
+.DS_Store
+.sass-cache
+Config.php
+.idea
+xcuserdata
