@@ -20,10 +20,10 @@
 	
 	// iPhone only
 	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
-		return UIInterfaceOrientationMaskLandscape;
+		return UIInterfaceOrientationMaskPortrait;
 	
 	// iPad only
-	return UIInterfaceOrientationMaskLandscape;
+	return UIInterfaceOrientationMaskPortrait;
 }
 
 // Supported orientations. Customize it for your own needs
@@ -32,11 +32,11 @@
 {
 	// iPhone only
 	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
-		return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+		return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 	
 	// iPad only
 	// iPhone only
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+	return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 // This is needed for iOS4 and iOS5 in order to ensure
@@ -77,12 +77,12 @@
 	// numberOfSamples: Only valid if multisampling is enabled
 	//  - Possible values: 0 to glGetIntegerv(GL_MAX_SAMPLES_APPLE)
 	CCGLView *glView = [CCGLView viewWithFrame:[window_ bounds]
-								   pixelFormat:kEAGLColorFormatRGB565
-								   depthFormat:0
-							preserveBackbuffer:NO
-									sharegroup:nil
-								 multiSampling:NO
-							   numberOfSamples:0];
+                                   pixelFormat:kEAGLColorFormatRGB565        //kEAGLColorFormatRGBA8
+                                   depthFormat:0        //GL_DEPTH_COMPONENT24_OES
+                            preserveBackbuffer:NO
+                                    sharegroup:nil
+                                 multiSampling:NO
+                               numberOfSamples:0];
 
 	// Enable multiple touches
 	[glView setMultipleTouchEnabled:YES];
@@ -90,10 +90,19 @@
 	director_ = (CCDirectorIOS*) [CCDirector sharedDirector];
 	
 	director_.wantsFullScreenLayout = YES;
+    
+    // Display FSP and SPF
+    
+/***************************************************/
+/***DISPLAY STATS op NO zetten voor eindresultaat***/
+/***************************************************/
 	
-	// Display FSP and SPF
-	[director_ setDisplayStats:YES];
+    [director_ setDisplayStats:YES];
 	
+/***************************************************/
+/***DISPLAY STATS op NO zetten voor eindresultaat***/
+/***************************************************/
+    
 	// set FPS at 60
 	[director_ setAnimationInterval:1.0/60];
 	
@@ -134,8 +143,9 @@
 	[director_ setDelegate:navController_];
 	
 	// set the Navigation Controller as the root view controller
-	[window_ setRootViewController:navController_];
-	
+    navController_.navigationBarHidden = YES;
+	[window_ setRootViewController: navController_];
+    
 	// make main window visible
 	[window_ makeKeyAndVisible];
 	

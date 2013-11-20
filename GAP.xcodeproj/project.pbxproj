@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EADD63D4183D26F0009EC89F /* StartLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EADD63D3183D26F0009EC89F /* StartLayer.m */; };
 		EAF57D44183D0B5C0061E5C1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF57D43183D0B5C0061E5C1 /* QuartzCore.framework */; };
 		EAF57D46183D0B5C0061E5C1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF57D45183D0B5C0061E5C1 /* OpenGLES.framework */; };
 		EAF57D48183D0B5C0061E5C1 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF57D47183D0B5C0061E5C1 /* OpenAL.framework */; };
@@ -184,13 +185,14 @@
 		EAF57F74183D0B5E0061E5C1 /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF57F73183D0B5E0061E5C1 /* b2Rope.cpp */; };
 		EAF57F7A183D0B5E0061E5C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF57F79183D0B5E0061E5C1 /* main.m */; };
 		EAF57F7D183D0B5E0061E5C1 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAF57F7C183D0B5E0061E5C1 /* AppDelegate.mm */; };
-		EAF57F80183D0B5E0061E5C1 /* HelloWorldLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAF57F7F183D0B5E0061E5C1 /* HelloWorldLayer.mm */; };
 		EAF57F83183D0B5E0061E5C1 /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAF57F82183D0B5E0061E5C1 /* IntroLayer.mm */; };
 		EAF57F86183D0B5E0061E5C1 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAF57F85183D0B5E0061E5C1 /* GLES-Render.mm */; };
 		EAF57F88183D0B5E0061E5C1 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = EAF57F87183D0B5E0061E5C1 /* blocks.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EADD63D2183D26F0009EC89F /* StartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartLayer.h; sourceTree = "<group>"; };
+		EADD63D3183D26F0009EC89F /* StartLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartLayer.m; sourceTree = "<group>"; };
 		EAF57D40183D0B5C0061E5C1 /* GAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF57D43183D0B5C0061E5C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EAF57D45183D0B5C0061E5C1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -562,8 +564,6 @@
 		EAF57F79183D0B5E0061E5C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EAF57F7B183D0B5E0061E5C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EAF57F7C183D0B5E0061E5C1 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		EAF57F7E183D0B5E0061E5C1 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		EAF57F7F183D0B5E0061E5C1 /* HelloWorldLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HelloWorldLayer.mm; sourceTree = "<group>"; };
 		EAF57F81183D0B5E0061E5C1 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		EAF57F82183D0B5E0061E5C1 /* IntroLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = IntroLayer.mm; sourceTree = "<group>"; };
 		EAF57F84183D0B5E0061E5C1 /* GLES-Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
@@ -631,8 +631,6 @@
 			children = (
 				EAF57F7B183D0B5E0061E5C1 /* AppDelegate.h */,
 				EAF57F7C183D0B5E0061E5C1 /* AppDelegate.mm */,
-				EAF57F7E183D0B5E0061E5C1 /* HelloWorldLayer.h */,
-				EAF57F7F183D0B5E0061E5C1 /* HelloWorldLayer.mm */,
 				EAF57F81183D0B5E0061E5C1 /* IntroLayer.h */,
 				EAF57F82183D0B5E0061E5C1 /* IntroLayer.mm */,
 				EAF57F84183D0B5E0061E5C1 /* GLES-Render.h */,
@@ -640,6 +638,8 @@
 				EAF57D58183D0B5C0061E5C1 /* Resources */,
 				EAF57D70183D0B5C0061E5C1 /* libs */,
 				EAF57F77183D0B5E0061E5C1 /* Supporting Files */,
+				EADD63D2183D26F0009EC89F /* StartLayer.h */,
+				EADD63D3183D26F0009EC89F /* StartLayer.m */,
 			);
 			path = GAP;
 			sourceTree = "<group>";
@@ -1212,6 +1212,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Devine;
+				TargetAttributes = {
+					EAF57D3F183D0B5C0061E5C1 = {
+						DevelopmentTeam = 9RZW73LTB7;
+					};
+				};
 			};
 			buildConfigurationList = EAF57D3B183D0B5C0061E5C1 /* Build configuration list for PBXProject "GAP" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1304,6 +1309,7 @@
 				EAF57DEB183D0B5D0061E5C1 /* CCParticleBatchNode.m in Sources */,
 				EAF57F06183D0B5E0061E5C1 /* b2EdgeShape.cpp in Sources */,
 				EAF57F2B183D0B5E0061E5C1 /* b2Island.cpp in Sources */,
+				EADD63D4183D26F0009EC89F /* StartLayer.m in Sources */,
 				EAF57E2E183D0B5D0061E5C1 /* CCTextureAtlas.m in Sources */,
 				EAF57EDC183D0B5E0061E5C1 /* utility.c in Sources */,
 				EAF57E88183D0B5D0061E5C1 /* CCVertex.m in Sources */,
@@ -1354,7 +1360,6 @@
 				EAF57E5E183D0B5D0061E5C1 /* CCGLView.m in Sources */,
 				EAF57E8B183D0B5D0061E5C1 /* CGPointExtension.m in Sources */,
 				EAF57D8F183D0B5C0061E5C1 /* CCActionPageTurn3D.m in Sources */,
-				EAF57F80183D0B5E0061E5C1 /* HelloWorldLayer.mm in Sources */,
 				EAF57EE0183D0B5E0061E5C1 /* vec3.c in Sources */,
 				EAF57E92183D0B5D0061E5C1 /* TGAlib.m in Sources */,
 				EAF57D9B183D0B5C0061E5C1 /* CCAnimation.m in Sources */,
@@ -1466,6 +1471,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1483,6 +1490,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"GAP/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1492,6 +1500,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GAP/Prefix.pch;
@@ -1508,6 +1518,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"GAP/libs\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -1533,6 +1544,7 @@
 				EAF57F8D183D0B5E0061E5C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
