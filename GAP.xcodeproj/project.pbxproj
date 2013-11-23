@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EADD63D4183D26F0009EC89F /* StartLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EADD63D3183D26F0009EC89F /* StartLayer.m */; };
+		EA6694D31840B4A200AF6A87 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA6694D21840B4A200AF6A87 /* CoreMotion.framework */; };
+		EA6694D51840B62700AF6A87 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA6694D41840B62700AF6A87 /* GameKit.framework */; };
+		EADD63D4183D26F0009EC89F /* StartLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = EADD63D3183D26F0009EC89F /* StartLayer.mm */; };
 		EAF57D44183D0B5C0061E5C1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF57D43183D0B5C0061E5C1 /* QuartzCore.framework */; };
 		EAF57D46183D0B5C0061E5C1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF57D45183D0B5C0061E5C1 /* OpenGLES.framework */; };
 		EAF57D48183D0B5C0061E5C1 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF57D47183D0B5C0061E5C1 /* OpenAL.framework */; };
@@ -190,8 +192,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA6694D21840B4A200AF6A87 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		EA6694D41840B62700AF6A87 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		EADD63D2183D26F0009EC89F /* StartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartLayer.h; sourceTree = "<group>"; };
-		EADD63D3183D26F0009EC89F /* StartLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartLayer.m; sourceTree = "<group>"; };
+		EADD63D3183D26F0009EC89F /* StartLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartLayer.mm; sourceTree = "<group>"; };
 		EAF57D40183D0B5C0061E5C1 /* GAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF57D43183D0B5C0061E5C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EAF57D45183D0B5C0061E5C1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -574,6 +578,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6694D51840B62700AF6A87 /* GameKit.framework in Frameworks */,
+				EA6694D31840B4A200AF6A87 /* CoreMotion.framework in Frameworks */,
 				EAF57D48183D0B5C0061E5C1 /* OpenAL.framework in Frameworks */,
 				EAF57D4E183D0B5C0061E5C1 /* UIKit.framework in Frameworks */,
 				EAF57D44183D0B5C0061E5C1 /* QuartzCore.framework in Frameworks */,
@@ -609,6 +615,8 @@
 		EAF57D42183D0B5C0061E5C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA6694D41840B62700AF6A87 /* GameKit.framework */,
+				EA6694D21840B4A200AF6A87 /* CoreMotion.framework */,
 				EAF57D43183D0B5C0061E5C1 /* QuartzCore.framework */,
 				EAF57D45183D0B5C0061E5C1 /* OpenGLES.framework */,
 				EAF57D47183D0B5C0061E5C1 /* OpenAL.framework */,
@@ -635,7 +643,7 @@
 				EAF57D70183D0B5C0061E5C1 /* libs */,
 				EAF57F77183D0B5E0061E5C1 /* Supporting Files */,
 				EADD63D2183D26F0009EC89F /* StartLayer.h */,
-				EADD63D3183D26F0009EC89F /* StartLayer.m */,
+				EADD63D3183D26F0009EC89F /* StartLayer.mm */,
 			);
 			path = GAP;
 			sourceTree = "<group>";
@@ -1310,7 +1318,7 @@
 				EAF57DEB183D0B5D0061E5C1 /* CCParticleBatchNode.m in Sources */,
 				EAF57F06183D0B5E0061E5C1 /* b2EdgeShape.cpp in Sources */,
 				EAF57F2B183D0B5E0061E5C1 /* b2Island.cpp in Sources */,
-				EADD63D4183D26F0009EC89F /* StartLayer.m in Sources */,
+				EADD63D4183D26F0009EC89F /* StartLayer.mm in Sources */,
 				EAF57E2E183D0B5D0061E5C1 /* CCTextureAtlas.m in Sources */,
 				EAF57EDC183D0B5E0061E5C1 /* utility.c in Sources */,
 				EAF57E88183D0B5D0061E5C1 /* CCVertex.m in Sources */,
