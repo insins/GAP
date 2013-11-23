@@ -9,7 +9,12 @@
 /* Begin PBXBuildFile section */
 		EA6694D31840B4A200AF6A87 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA6694D21840B4A200AF6A87 /* CoreMotion.framework */; };
 		EA6694D51840B62700AF6A87 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA6694D41840B62700AF6A87 /* GameKit.framework */; };
-		EADD63D4183D26F0009EC89F /* StartLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = EADD63D3183D26F0009EC89F /* StartLayer.mm */; };
+		EA6694E41841081200AF6A87 /* SceneFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA6694E31841081200AF6A87 /* SceneFactory.mm */; };
+		EA6694EA18410CBE00AF6A87 /* AchievementsScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA6694E918410CBE00AF6A87 /* AchievementsScene.mm */; };
+		EA6694EE18410D9600AF6A87 /* MenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA6694ED18410D9600AF6A87 /* MenuLayer.mm */; };
+		EA6694F31841153900AF6A87 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA6694F21841153900AF6A87 /* GameScene.mm */; };
+		EA6694F51841155A00AF6A87 /* images in Resources */ = {isa = PBXBuildFile; fileRef = EA6694F41841155A00AF6A87 /* images */; };
+		EADD63D4183D26F0009EC89F /* StartScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = EADD63D3183D26F0009EC89F /* StartScene.mm */; };
 		EAF57D44183D0B5C0061E5C1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF57D43183D0B5C0061E5C1 /* QuartzCore.framework */; };
 		EAF57D46183D0B5C0061E5C1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF57D45183D0B5C0061E5C1 /* OpenGLES.framework */; };
 		EAF57D48183D0B5C0061E5C1 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF57D47183D0B5C0061E5C1 /* OpenAL.framework */; };
@@ -194,8 +199,17 @@
 /* Begin PBXFileReference section */
 		EA6694D21840B4A200AF6A87 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		EA6694D41840B62700AF6A87 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		EADD63D2183D26F0009EC89F /* StartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartLayer.h; sourceTree = "<group>"; };
-		EADD63D3183D26F0009EC89F /* StartLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartLayer.mm; sourceTree = "<group>"; };
+		EA6694E21841081200AF6A87 /* SceneFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneFactory.h; sourceTree = "<group>"; };
+		EA6694E31841081200AF6A87 /* SceneFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SceneFactory.mm; sourceTree = "<group>"; };
+		EA6694E818410CBE00AF6A87 /* AchievementsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsScene.h; sourceTree = "<group>"; };
+		EA6694E918410CBE00AF6A87 /* AchievementsScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AchievementsScene.mm; sourceTree = "<group>"; };
+		EA6694EC18410D9600AF6A87 /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
+		EA6694ED18410D9600AF6A87 /* MenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuLayer.mm; sourceTree = "<group>"; };
+		EA6694F11841153900AF6A87 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		EA6694F21841153900AF6A87 /* GameScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScene.mm; sourceTree = "<group>"; };
+		EA6694F41841155A00AF6A87 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		EADD63D2183D26F0009EC89F /* StartScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScene.h; sourceTree = "<group>"; };
+		EADD63D3183D26F0009EC89F /* StartScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartScene.mm; sourceTree = "<group>"; };
 		EAF57D40183D0B5C0061E5C1 /* GAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF57D43183D0B5C0061E5C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EAF57D45183D0B5C0061E5C1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -595,6 +609,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA6694E518410C7D00AF6A87 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				EA6694E618410C8700AF6A87 /* Layers */,
+				EA6694F11841153900AF6A87 /* GameScene.h */,
+				EA6694F21841153900AF6A87 /* GameScene.mm */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		EA6694E618410C8700AF6A87 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				EA6694EC18410D9600AF6A87 /* MenuLayer.h */,
+				EA6694ED18410D9600AF6A87 /* MenuLayer.mm */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		EA6694E718410C8F00AF6A87 /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				EA6694EB18410CC800AF6A87 /* Layers */,
+				EA6694E818410CBE00AF6A87 /* AchievementsScene.h */,
+				EA6694E918410CBE00AF6A87 /* AchievementsScene.mm */,
+			);
+			name = Achievements;
+			sourceTree = "<group>";
+		};
+		EA6694EB18410CC800AF6A87 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		EA6694EF18410E8C00AF6A87 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EAF57F7B183D0B5E0061E5C1 /* AppDelegate.h */,
+				EAF57F7C183D0B5E0061E5C1 /* AppDelegate.mm */,
+				EAF57F81183D0B5E0061E5C1 /* IntroLayer.h */,
+				EAF57F82183D0B5E0061E5C1 /* IntroLayer.mm */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		EAF57D37183D0B5C0061E5C1 = {
 			isa = PBXGroup;
 			children = (
@@ -633,17 +694,19 @@
 		EAF57D57183D0B5C0061E5C1 /* GAP */ = {
 			isa = PBXGroup;
 			children = (
-				EAF57F7B183D0B5E0061E5C1 /* AppDelegate.h */,
-				EAF57F7C183D0B5E0061E5C1 /* AppDelegate.mm */,
-				EAF57F81183D0B5E0061E5C1 /* IntroLayer.h */,
-				EAF57F82183D0B5E0061E5C1 /* IntroLayer.mm */,
+				EA6694F41841155A00AF6A87 /* images */,
+				EA6694EF18410E8C00AF6A87 /* Base */,
+				EA6694E718410C8F00AF6A87 /* Achievements */,
+				EA6694E518410C7D00AF6A87 /* Game */,
 				EAF57F84183D0B5E0061E5C1 /* GLES-Render.h */,
 				EAF57F85183D0B5E0061E5C1 /* GLES-Render.mm */,
 				EAF57D58183D0B5C0061E5C1 /* Resources */,
 				EAF57D70183D0B5C0061E5C1 /* libs */,
 				EAF57F77183D0B5E0061E5C1 /* Supporting Files */,
-				EADD63D2183D26F0009EC89F /* StartLayer.h */,
-				EADD63D3183D26F0009EC89F /* StartLayer.mm */,
+				EADD63D2183D26F0009EC89F /* StartScene.h */,
+				EADD63D3183D26F0009EC89F /* StartScene.mm */,
+				EA6694E21841081200AF6A87 /* SceneFactory.h */,
+				EA6694E31841081200AF6A87 /* SceneFactory.mm */,
 			);
 			path = GAP;
 			sourceTree = "<group>";
@@ -1261,6 +1324,7 @@
 				EAF57D68183D0B5C0061E5C1 /* Icon-Small@2x.png in Resources */,
 				EAF57D60183D0B5C0061E5C1 /* Default-Landscape~ipad.png in Resources */,
 				EAF57D5E183D0B5C0061E5C1 /* Default-568h@2x.png in Resources */,
+				EA6694F51841155A00AF6A87 /* images in Resources */,
 				EAF57D6C183D0B5C0061E5C1 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1283,6 +1347,7 @@
 				EAF57ED2183D0B5E0061E5C1 /* mat4.c in Sources */,
 				EAF57DAE183D0B5C0061E5C1 /* ccDeprecated.m in Sources */,
 				EAF57F67183D0B5E0061E5C1 /* b2RevoluteJoint.cpp in Sources */,
+				EA6694F31841153900AF6A87 /* GameScene.mm in Sources */,
 				EAF57E69183D0B5D0061E5C1 /* CCDirectorMac.m in Sources */,
 				EAF57DC3183D0B5D0061E5C1 /* ccGLStateCache.m in Sources */,
 				EAF57E95183D0B5D0061E5C1 /* TransformUtils.m in Sources */,
@@ -1318,7 +1383,8 @@
 				EAF57DEB183D0B5D0061E5C1 /* CCParticleBatchNode.m in Sources */,
 				EAF57F06183D0B5E0061E5C1 /* b2EdgeShape.cpp in Sources */,
 				EAF57F2B183D0B5E0061E5C1 /* b2Island.cpp in Sources */,
-				EADD63D4183D26F0009EC89F /* StartLayer.mm in Sources */,
+				EA6694EE18410D9600AF6A87 /* MenuLayer.mm in Sources */,
+				EADD63D4183D26F0009EC89F /* StartScene.mm in Sources */,
 				EAF57E2E183D0B5D0061E5C1 /* CCTextureAtlas.m in Sources */,
 				EAF57EDC183D0B5E0061E5C1 /* utility.c in Sources */,
 				EAF57E88183D0B5D0061E5C1 /* CCVertex.m in Sources */,
@@ -1350,6 +1416,7 @@
 				EAF57D92183D0B5C0061E5C1 /* CCActionProgressTimer.m in Sources */,
 				EAF57EED183D0B5E0061E5C1 /* b2CollideCircle.cpp in Sources */,
 				EAF57D74183D0B5C0061E5C1 /* CCAction.m in Sources */,
+				EA6694E41841081200AF6A87 /* SceneFactory.mm in Sources */,
 				EAF57EAC183D0B5E0061E5C1 /* CocosDenshion.m in Sources */,
 				EAF57E31183D0B5D0061E5C1 /* CCTextureCache.m in Sources */,
 				EAF57ED4183D0B5E0061E5C1 /* neon_matrix_impl.c in Sources */,
@@ -1411,6 +1478,7 @@
 				EAF57F18183D0B5E0061E5C1 /* b2Settings.cpp in Sources */,
 				EAF57E50183D0B5D0061E5C1 /* cocos2d.m in Sources */,
 				EAF57DFD183D0B5D0061E5C1 /* CCProgressTimer.m in Sources */,
+				EA6694EA18410CBE00AF6A87 /* AchievementsScene.mm in Sources */,
 				EAF57F0E183D0B5E0061E5C1 /* b2BlockAllocator.cpp in Sources */,
 				EAF57DD2183D0B5D0061E5C1 /* CCLabelTTF.m in Sources */,
 				EAF57E7F183D0B5D0061E5C1 /* CCFileUtils.m in Sources */,

@@ -2,14 +2,13 @@
 //  MyCocos2DClass.m
 //  GAP
 //
-//  Created by Ruben Van Wassenhove on 20/11/13.
+//  Created by Ruben Van Wassenhove on 23/11/13.
 //  Copyright 2013 Devine. All rights reserved.
 //
 
-#import "StartLayer.h"
-#import "AppDelegate.h"
+#import "GameScene.h"
 
-@implementation StartLayer
+@implementation GameScene
 
 @synthesize motionManager = _motionManager;
 @synthesize s = _s;
@@ -17,17 +16,13 @@
 @synthesize filteringFactor = _filteringFactor;
 @synthesize xGyro = _xGyro;
 @synthesize yGyro = _yGyro;
-
-+(id)scene{
-    CCScene *scene = [CCScene node];
-    StartLayer *layer = [StartLayer node];
-    [scene addChild:layer];
-    return scene;
-}
+@synthesize player = _player;
 
 -(id)init{
     if((self=[super init])){
-        self.touchEnabled = YES;
+        
+        NSLog(@"init");
+        
         self.s = [CCDirector sharedDirector].winSize;
         
         self.filteringFactor = .1;
@@ -43,9 +38,19 @@
             [self.motionManager startDeviceMotionUpdates];
         }
         
-        [self createMenu];
         [self initPhysics];
         [self scheduleUpdate];
+         
+         NSString *path = [[NSBundle mainBundle] pathForResource:@"spook" ofType:@"png" inDirectory:@"images"];
+         
+         self.player = [CCSprite spriteWithFile:path];
+         self.player.position = ccp(self.s.width/2,self.s.height/2);
+         
+        self.objectsLayer = [CCLayer node];
+        [self.objectsLayer addChild:self.player];
+        
+        [self addChild:self.objectsLayer];
+         
     }
     
     return self;
@@ -63,34 +68,12 @@
     
     self.xGyro = pitch;
     self.yGyro = roll;
+    
+    self.player.position = ccp(self.s.width/2 + (self.s.width/2)*(roll/1.5),self.s.height/2 - (self.s.height/4)*(pitch/1.5));
 }
 
 -(void)initPhysics{
     
-}
-
--(void)createMenu{
-    [CCMenuItemFont setFontName:@"GillSans-BoldItalic"];
-    [CCMenuItemFont setFontSize:22];
-    
-    // to avoid a retain-cycle with the menuitem and blocks
-	__block id copy_self = self;
-    
-    CCMenuItem *itemStart = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
-		
-		//LOAD GAME
-	}];
-    
-    CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
-		
-		//LOAD ACHIEVMENTS
-	}];
-    
-    CCMenu *menu = [CCMenu menuWithItems:itemStart, itemAchievement, nil];
-    [menu alignItemsVertically];
-    [menu setPosition:ccp(self.s.width/2, self.s.height-40)];
-    
-    [self addChild:menu z:-1];
 }
 
 @end
