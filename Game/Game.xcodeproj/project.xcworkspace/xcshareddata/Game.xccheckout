@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>97A174FB-D4FA-4522-8EEA-A4CB768BC2A3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Game</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7EF91C49-7159-4D91-B4B3-B5BD833864E9</key>
+		<string>https://github.com/rubinoske/GAP.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Game/Game.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7EF91C49-7159-4D91-B4B3-B5BD833864E9</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/rubinoske/GAP.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7EF91C49-7159-4D91-B4B3-B5BD833864E9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7EF91C49-7159-4D91-B4B3-B5BD833864E9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GAP</string>
+		</dict>
+	</array>
+</dict>
+</plist>
