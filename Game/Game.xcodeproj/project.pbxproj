@@ -26,7 +26,12 @@
 		EA66958E18448F6F00AF6A87 /* images in Resources */ = {isa = PBXBuildFile; fileRef = EA66958D18448F6F00AF6A87 /* images */; };
 		EA6695921844A08A00AF6A87 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695911844A08A00AF6A87 /* GameScene.m */; };
 		EA6695951844A13900AF6A87 /* AchievementsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695941844A13900AF6A87 /* AchievementsScene.m */; };
-		EA6695991844A69100AF6A87 /* PauseLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695981844A69100AF6A87 /* PauseLayer.m */; };
+		EA6695991844A69100AF6A87 /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695981844A69100AF6A87 /* Pause.m */; };
+		EA6698F1184B839200AF6A87 /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698F0184B839200AF6A87 /* World.m */; };
+		EA6698F4184B83D400AF6A87 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698F3184B83D400AF6A87 /* Player.m */; };
+		EA6698F7184B845500AF6A87 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698F6184B845500AF6A87 /* Background.m */; };
+		EA6698FA184B846D00AF6A87 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698F9184B846D00AF6A87 /* Item.m */; };
+		EA6698FD184BA9CD00AF6A87 /* Enemie.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698FC184BA9CD00AF6A87 /* Enemie.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +72,18 @@
 		EA6695911844A08A00AF6A87 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		EA6695931844A13900AF6A87 /* AchievementsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsScene.h; sourceTree = "<group>"; };
 		EA6695941844A13900AF6A87 /* AchievementsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsScene.m; sourceTree = "<group>"; };
-		EA6695971844A69100AF6A87 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
-		EA6695981844A69100AF6A87 /* PauseLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseLayer.m; sourceTree = "<group>"; };
+		EA6695971844A69100AF6A87 /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
+		EA6695981844A69100AF6A87 /* Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pause.m; sourceTree = "<group>"; };
+		EA6698EF184B839200AF6A87 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		EA6698F0184B839200AF6A87 /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
+		EA6698F2184B83D400AF6A87 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		EA6698F3184B83D400AF6A87 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		EA6698F5184B845500AF6A87 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		EA6698F6184B845500AF6A87 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
+		EA6698F8184B846D00AF6A87 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		EA6698F9184B846D00AF6A87 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		EA6698FB184BA9CD00AF6A87 /* Enemie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemie.h; sourceTree = "<group>"; };
+		EA6698FC184BA9CD00AF6A87 /* Enemie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemie.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,8 +204,18 @@
 		EA6695961844A62900AF6A87 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				EA6695971844A69100AF6A87 /* PauseLayer.h */,
-				EA6695981844A69100AF6A87 /* PauseLayer.m */,
+				EA6695971844A69100AF6A87 /* Pause.h */,
+				EA6695981844A69100AF6A87 /* Pause.m */,
+				EA6698EF184B839200AF6A87 /* World.h */,
+				EA6698F0184B839200AF6A87 /* World.m */,
+				EA6698F2184B83D400AF6A87 /* Player.h */,
+				EA6698F3184B83D400AF6A87 /* Player.m */,
+				EA6698F5184B845500AF6A87 /* Background.h */,
+				EA6698F6184B845500AF6A87 /* Background.m */,
+				EA6698F8184B846D00AF6A87 /* Item.h */,
+				EA6698F9184B846D00AF6A87 /* Item.m */,
+				EA6698FB184BA9CD00AF6A87 /* Enemie.h */,
+				EA6698FC184BA9CD00AF6A87 /* Enemie.m */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -296,12 +321,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6698FA184B846D00AF6A87 /* Item.m in Sources */,
 				EA66956D18448E9B00AF6A87 /* StartScene.m in Sources */,
 				EA66956A18448E9B00AF6A87 /* ViewController.m in Sources */,
 				EA6695951844A13900AF6A87 /* AchievementsScene.m in Sources */,
+				EA6698F7184B845500AF6A87 /* Background.m in Sources */,
 				EA6695921844A08A00AF6A87 /* GameScene.m in Sources */,
-				EA6695991844A69100AF6A87 /* PauseLayer.m in Sources */,
+				EA6698FD184BA9CD00AF6A87 /* Enemie.m in Sources */,
+				EA6698F1184B839200AF6A87 /* World.m in Sources */,
+				EA6695991844A69100AF6A87 /* Pause.m in Sources */,
 				EA66956418448E9B00AF6A87 /* AppDelegate.m in Sources */,
+				EA6698F4184B83D400AF6A87 /* Player.m in Sources */,
 				EA66956018448E9B00AF6A87 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,6 +545,7 @@
 				EA66958918448E9B00AF6A87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA66958A18448E9B00AF6A87 /* Build configuration list for PBXNativeTarget "GameTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +554,7 @@
 				EA66958C18448E9B00AF6A87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

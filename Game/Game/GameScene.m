@@ -15,6 +15,8 @@
 @synthesize xGyro = _xGyro;
 @synthesize yGyro = _yGyro;
 @synthesize player = _player;
+@synthesize background = _background;
+@synthesize world = _world;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -36,15 +38,23 @@
         
         [self initPhysics];
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"spook" ofType:@"png" inDirectory:@"images"];
+        self.background = [[Background alloc]init];
         
-        self.player = [SKSpriteNode spriteNodeWithImageNamed:path];
-        
+        self.player = [[Player alloc] init];
         self.player.position = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
         
+        self.world = [[World alloc] init];
+        
+        [self addChild:self.background];
         [self addChild:self.player];
+        [self addChild:self.world];
+        
     }
     return self;
+}
+
+-(void)gameOver{
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {
@@ -62,10 +72,16 @@
     self.yGyro = roll;
     
     self.player.position = CGPointMake(self.frame.size.width/2 + (self.frame.size.width/2)*(roll/1.5),self.frame.size.height/2 - (self.frame.size.height/4)*(pitch/1.5));
+    
+    [(Player*)self.player scaleBell];
+    [(World*)self.world moveEnemies];
+    
+    //Move bg en world
 }
 
 -(void)initPhysics{
-    
+    NSLog(@"x: %f", self.physicsWorld.gravity.dx);
+    NSLog(@"y: %f", self.physicsWorld.gravity.dy);
 }
 
 @end

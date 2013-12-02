@@ -1,14 +1,14 @@
 //
-//  MenuLayer.m
+//  Pause.m
 //  Game
 //
 //  Created by Ruben Van Wassenhove on 26/11/13.
 //  Copyright (c) 2013 Devine. All rights reserved.
 //
 
-#import "PauseLayer.h"
+#import "Pause.h"
 
-@implementation PauseLayer
+@implementation Pause
 
 -(id)initWithSize:(CGSize)size{
     

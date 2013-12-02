@@ -1,5 +1,5 @@
 //
-//  MenuLayer.h
+//  Pause.h
 //  Game
 //
 //  Created by Ruben Van Wassenhove on 26/11/13.
@@ -9,7 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "StartScene.h"
 
-@interface PauseLayer : SKNode
+@interface Pause : SKNode
 
 @property(nonatomic, strong) SKLabelNode* menuSceneItem;
 @property(nonatomic, strong) SKLabelNode* resumeItem;
