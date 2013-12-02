@@ -111,6 +111,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E8469B9B184CDCCA00D1BC42 /* Pause */ = {
+			isa = PBXGroup;
+			children = (
+				EA6695971844A69100AF6A87 /* Pause.h */,
+				EA6695981844A69100AF6A87 /* Pause.m */,
+			);
+			name = Pause;
+			sourceTree = "<group>";
+		};
+		E8469B9C184CDCD900D1BC42 /* World */ = {
+			isa = PBXGroup;
+			children = (
+				EA6698EF184B839200AF6A87 /* World.h */,
+				EA6698F0184B839200AF6A87 /* World.m */,
+			);
+			name = World;
+			sourceTree = "<group>";
+		};
+		E8469B9D184CDCDF00D1BC42 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				EA6698F2184B83D400AF6A87 /* Player.h */,
+				EA6698F3184B83D400AF6A87 /* Player.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		E8469B9E184CDCF000D1BC42 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				EA6698F5184B845500AF6A87 /* Background.h */,
+				EA6698F6184B845500AF6A87 /* Background.m */,
+			);
+			name = Background;
+			sourceTree = "<group>";
+		};
+		E8469B9F184CDCF700D1BC42 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				EA6698F8184B846D00AF6A87 /* Item.h */,
+				EA6698F9184B846D00AF6A87 /* Item.m */,
+			);
+			name = Item;
+			sourceTree = "<group>";
+		};
+		E8469BA0184CDD9E00D1BC42 /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				EA6695901844A08A00AF6A87 /* GameScene.h */,
+				EA6695911844A08A00AF6A87 /* GameScene.m */,
+			);
+			name = GameScene;
+			sourceTree = "<group>";
+		};
+		E8469BA1184CDDBD00D1BC42 /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				EA6698FB184BA9CD00AF6A87 /* Enemie.h */,
+				EA6698FC184BA9CD00AF6A87 /* Enemie.m */,
+			);
+			name = Enemy;
+			sourceTree = "<group>";
+		};
 		EA66954518448E9B00AF6A87 = {
 			isa = PBXGroup;
 			children = (
@@ -195,8 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				EA6695961844A62900AF6A87 /* Layers */,
-				EA6695901844A08A00AF6A87 /* GameScene.h */,
-				EA6695911844A08A00AF6A87 /* GameScene.m */,
+				E8469BA0184CDD9E00D1BC42 /* GameScene */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -204,18 +266,12 @@
 		EA6695961844A62900AF6A87 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				EA6695971844A69100AF6A87 /* Pause.h */,
-				EA6695981844A69100AF6A87 /* Pause.m */,
-				EA6698EF184B839200AF6A87 /* World.h */,
-				EA6698F0184B839200AF6A87 /* World.m */,
-				EA6698F2184B83D400AF6A87 /* Player.h */,
-				EA6698F3184B83D400AF6A87 /* Player.m */,
-				EA6698F5184B845500AF6A87 /* Background.h */,
-				EA6698F6184B845500AF6A87 /* Background.m */,
-				EA6698F8184B846D00AF6A87 /* Item.h */,
-				EA6698F9184B846D00AF6A87 /* Item.m */,
-				EA6698FB184BA9CD00AF6A87 /* Enemie.h */,
-				EA6698FC184BA9CD00AF6A87 /* Enemie.m */,
+				E8469B9B184CDCCA00D1BC42 /* Pause */,
+				E8469B9C184CDCD900D1BC42 /* World */,
+				E8469B9D184CDCDF00D1BC42 /* Player */,
+				E8469B9E184CDCF000D1BC42 /* Background */,
+				E8469B9F184CDCF700D1BC42 /* Item */,
+				E8469BA1184CDDBD00D1BC42 /* Enemy */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
