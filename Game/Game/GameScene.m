@@ -48,7 +48,7 @@
         self.player = [[Player alloc] init];
         self.player.position = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
         
-        self.world = [[World alloc] init];
+        self.world = [[World alloc] initWithFrame:self.frame];
         
         [self addChild:self.background];
         [self addChild:self.player];
@@ -71,21 +71,28 @@
     float pitch = currAttitude.pitch;
     float yaw = currAttitude.yaw;
     
-    NSLog(@"rpy [%0.2f, %0.2f, %0.2f]", roll, pitch, yaw);
+    //NSLog(@"rpy [%0.2f, %0.2f, %0.2f]", roll, pitch, yaw);
     
     self.xGyro = pitch;
     self.yGyro = roll;
     
     self.player.position = CGPointMake(self.frame.size.width/2 + (self.frame.size.width/2)*(roll/1.5),self.frame.size.height/2 - (self.frame.size.height/4)*(pitch/1.5));
     
-    [(World*)self.world moveEnemies];
+    //[(World*)self.world moveEnemies];
     
     //Move bg en world
+    self.world.position = CGPointMake(self.world.position.x,self.world.position.y-1);
+    
+    int yPos = self.world.position.y;
+    
+    if (!(yPos%200)) {
+        //NSLog(@"%i: deelbaar", yPos);
+        [(World*)self.world updateObjects];
+    }
 }
 
 -(void)initPhysics{
-    NSLog(@"x: %f", self.physicsWorld.gravity.dx);
-    NSLog(@"y: %f", self.physicsWorld.gravity.dy);
+    NSLog(@"gravity: %f", self.physicsWorld.gravity.dy);
 }
 
 - (int)lives{

@@ -13,6 +13,10 @@
 
 @interface World : SKNode
 
+@property (nonatomic) CGRect frame;
+
+-(void)updateObjects;
 -(void)moveEnemies;
+-(id)initWithFrame:(CGRect)frame;
 
 @end

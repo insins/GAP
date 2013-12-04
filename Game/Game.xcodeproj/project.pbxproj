@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA3F10A0184F3F13007CD424 /* enemies in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109C184F3F13007CD424 /* enemies */; };
+		EA3F10A1184F3F13007CD424 /* items in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109D184F3F13007CD424 /* items */; };
+		EA3F10A2184F3F13007CD424 /* player in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109E184F3F13007CD424 /* player */; };
+		EA3F10A3184F3F13007CD424 /* powerups in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109F184F3F13007CD424 /* powerups */; };
 		EA66955218448E9B00AF6A87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955118448E9B00AF6A87 /* Foundation.framework */; };
 		EA66955418448E9B00AF6A87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955318448E9B00AF6A87 /* CoreGraphics.framework */; };
 		EA66955618448E9B00AF6A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955518448E9B00AF6A87 /* UIKit.framework */; };
@@ -21,7 +25,6 @@
 		EA66957818448E9B00AF6A87 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66957718448E9B00AF6A87 /* XCTest.framework */; };
 		EA66957918448E9B00AF6A87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955118448E9B00AF6A87 /* Foundation.framework */; };
 		EA66957A18448E9B00AF6A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955518448E9B00AF6A87 /* UIKit.framework */; };
-		EA66958E18448F6F00AF6A87 /* images in Resources */ = {isa = PBXBuildFile; fileRef = EA66958D18448F6F00AF6A87 /* images */; };
 		EA6695921844A08A00AF6A87 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695911844A08A00AF6A87 /* GameScene.m */; };
 		EA6695951844A13900AF6A87 /* AchievementsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695941844A13900AF6A87 /* AchievementsScene.m */; };
 		EA6695991844A69100AF6A87 /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695981844A69100AF6A87 /* Pause.m */; };
@@ -43,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA3F109C184F3F13007CD424 /* enemies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = enemies; sourceTree = "<group>"; };
+		EA3F109D184F3F13007CD424 /* items */ = {isa = PBXFileReference; lastKnownFileType = folder; path = items; sourceTree = "<group>"; };
+		EA3F109E184F3F13007CD424 /* player */ = {isa = PBXFileReference; lastKnownFileType = folder; path = player; sourceTree = "<group>"; };
+		EA3F109F184F3F13007CD424 /* powerups */ = {isa = PBXFileReference; lastKnownFileType = folder; path = powerups; sourceTree = "<group>"; };
 		EA66954E18448E9B00AF6A87 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA66955118448E9B00AF6A87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA66955318448E9B00AF6A87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,7 +69,6 @@
 		EA66957018448E9B00AF6A87 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA66957618448E9B00AF6A87 /* GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA66957718448E9B00AF6A87 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EA66958D18448F6F00AF6A87 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		EA6695901844A08A00AF6A87 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		EA6695911844A08A00AF6A87 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		EA6695931844A13900AF6A87 /* AchievementsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsScene.h; sourceTree = "<group>"; };
@@ -198,9 +204,22 @@
 			name = Achievements;
 			sourceTree = "<group>";
 		};
+		EA3F1084184F2085007CD424 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				EA3F109C184F3F13007CD424 /* enemies */,
+				EA3F109D184F3F13007CD424 /* items */,
+				EA3F109E184F3F13007CD424 /* player */,
+				EA3F109F184F3F13007CD424 /* powerups */,
+			);
+			name = images;
+			path = Game/images;
+			sourceTree = "<group>";
+		};
 		EA66954518448E9B00AF6A87 = {
 			isa = PBXGroup;
 			children = (
+				EA3F1084184F2085007CD424 /* images */,
 				EA66955918448E9B00AF6A87 /* Game */,
 				EA66955018448E9B00AF6A87 /* Frameworks */,
 				EA66954F18448E9B00AF6A87 /* Products */,
@@ -231,11 +250,10 @@
 		EA66955918448E9B00AF6A87 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				EA3F1043184F1BF3007CD424 /* Achievements */,
-				EA3F1042184F1BE5007CD424 /* Start */,
 				EA3F1041184F1BCB007CD424 /* Setup */,
+				EA3F1042184F1BE5007CD424 /* Start */,
+				EA3F1043184F1BF3007CD424 /* Achievements */,
 				EA66958F1844A07600AF6A87 /* Game */,
-				EA66958D18448F6F00AF6A87 /* images */,
 				EA66956518448E9B00AF6A87 /* Main.storyboard */,
 				EA66957018448E9B00AF6A87 /* Images.xcassets */,
 				EA66955A18448E9B00AF6A87 /* Supporting Files */,
@@ -355,9 +373,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA66958E18448F6F00AF6A87 /* images in Resources */,
+				EA3F10A1184F3F13007CD424 /* items in Resources */,
 				EA66955E18448E9B00AF6A87 /* InfoPlist.strings in Resources */,
+				EA3F10A0184F3F13007CD424 /* enemies in Resources */,
+				EA3F10A2184F3F13007CD424 /* player in Resources */,
 				EA66957118448E9B00AF6A87 /* Images.xcassets in Resources */,
+				EA3F10A3184F3F13007CD424 /* powerups in Resources */,
 				EA66956718448E9B00AF6A87 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

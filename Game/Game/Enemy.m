@@ -10,10 +10,14 @@
 
 @implementation Enemy
 
--(id)initWithType:(NSString*)type{
+-(id)init{
     if (self = [super init]) {
     
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"jelly" ofType:@"png" inDirectory:@"powerups"];
         
+        SKNode *test = [SKSpriteNode spriteNodeWithImageNamed:path];
+        
+        [self addChild:test];
         
     }
     

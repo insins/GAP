@@ -10,6 +10,4 @@
 
 @interface Enemy : SKNode
 
--(id)initWithType:(NSString*)type;
-
 @end

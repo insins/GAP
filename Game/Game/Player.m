@@ -16,11 +16,11 @@
 -(id) init{
     if (self = [super init]) {
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"fish" ofType:@"png" inDirectory:@"images"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"fish" ofType:@"png" inDirectory:@"player"];
         
         self.fish = [SKSpriteNode spriteNodeWithImageNamed:path];
         
-        path = [[NSBundle mainBundle] pathForResource:@"bell1" ofType:@"png" inDirectory:@"images"];
+        path = [[NSBundle mainBundle] pathForResource:@"bell1" ofType:@"png" inDirectory:@"player"];
         
         self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
         
@@ -35,7 +35,7 @@
     
     [self removeChildrenInArray:@[self.bell]];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"bell%i", lives]  ofType:@"png" inDirectory:@"images"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"bell%i", lives]  ofType:@"png" inDirectory:@"player"];
     
     self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
     

@@ -32,7 +32,7 @@
 -(SKNode*)createPowerup{
     
     //generate path (random)
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"fish" ofType:@"png" inDirectory:@"images"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"turtle" ofType:@"png" inDirectory:@"powerups"];
     
     SKNode *powerup = [SKSpriteNode spriteNodeWithImageNamed:path];
     
@@ -42,7 +42,7 @@
 -(SKNode*)createCollectorItem{
     
     //generate path (adhv level)
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"fish" ofType:@"png" inDirectory:@"images"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"item1" ofType:@"png" inDirectory:@"items"];
     
     SKNode *item = [SKSpriteNode spriteNodeWithImageNamed:path];
     
