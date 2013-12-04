@@ -1,5 +1,5 @@
 //
-//  Enemie.h
+//  Enemy.h
 //  Game
 //
 //  Created by Ruben Van Wassenhove on 01/12/13.
@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Enemie : SKNode
+@interface Enemy : SKNode
 
 -(id)initWithType:(NSString*)type;
 
