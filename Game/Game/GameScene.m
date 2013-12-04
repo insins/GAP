@@ -17,10 +17,15 @@
 @synthesize player = _player;
 @synthesize background = _background;
 @synthesize world = _world;
+@synthesize lives = _lives;
+@synthesize level = _level;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
+        
+        self.lives = 3;
+        self.level = 1;
         
         self.backgroundColor = [SKColor whiteColor];
         
@@ -73,7 +78,6 @@
     
     self.player.position = CGPointMake(self.frame.size.width/2 + (self.frame.size.width/2)*(roll/1.5),self.frame.size.height/2 - (self.frame.size.height/4)*(pitch/1.5));
     
-    [(Player*)self.player scaleBell];
     [(World*)self.world moveEnemies];
     
     //Move bg en world
@@ -82,6 +86,26 @@
 -(void)initPhysics{
     NSLog(@"x: %f", self.physicsWorld.gravity.dx);
     NSLog(@"y: %f", self.physicsWorld.gravity.dy);
+}
+
+- (int)lives{
+    return _lives;
+}
+
+- (void)setLives:(int)lives{
+    _lives = lives;
+    
+    [(Player*)self.player scaleBell:lives];
+}
+
+- (int)level{
+    return _level;
+}
+
+- (void)setLevel:(int)level{
+    _level = level;
+    
+    //Setup new bg, enemies & items
 }
 
 @end

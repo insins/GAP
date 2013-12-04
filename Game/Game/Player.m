@@ -10,27 +10,39 @@
 
 @implementation Player
 
+@synthesize bell = _bell;
+@synthesize fish = _fish;
+
 -(id) init{
     if (self = [super init]) {
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"spook" ofType:@"png" inDirectory:@"images"];
-    
-        SKSpriteNode *fish = [SKSpriteNode spriteNodeWithImageNamed:path];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"fish" ofType:@"png" inDirectory:@"images"];
         
-        [self addChild:fish];
+        self.fish = [SKSpriteNode spriteNodeWithImageNamed:path];
         
-        path = [[NSBundle mainBundle] pathForResource:@"spook" ofType:@"png" inDirectory:@"images"];
+        path = [[NSBundle mainBundle] pathForResource:@"bell1" ofType:@"png" inDirectory:@"images"];
         
-        SKSpriteNode *bell = [SKSpriteNode spriteNodeWithImageNamed:path];
+        self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
         
-        [self addChild:bell];
-        
+        [self addChild:self.bell];
+        [self addChild:self.fish];
     
     }
     return self;
 }
 
--(void)scaleBell{
+-(void)scaleBell:(int)lives{
+    
+    [self removeChildrenInArray:@[self.bell]];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"bell%i", lives]  ofType:@"png" inDirectory:@"images"];
+    
+    self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
+    
+    [self addChild:self.bell];
+}
+
+-(void)addPower:(NSString*)type{
     
 }
 

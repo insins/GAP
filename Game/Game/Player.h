@@ -10,7 +10,10 @@
 
 @interface Player : SKNode
 
+@property (nonatomic, strong) SKSpriteNode *bell;
+@property (nonatomic, strong) SKSpriteNode *fish;
 
--(void)scaleBell;
+-(void)scaleBell:(int)lives;
+-(void)addPower:(NSString*)type;
 
 @end
