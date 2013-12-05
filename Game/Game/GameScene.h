@@ -21,15 +21,15 @@
 @property (nonatomic, strong) SKNode *background;
 @property (nonatomic, strong) SKNode *world;
 
+@property (nonatomic) int interval;
+@property (nonatomic) int difficulty;
+
 @property (nonatomic) int lives;
 @property (nonatomic) int level;
 
 @property (nonatomic, strong) CMMotionManager *motionManager;
 
 @property (nonatomic) float frequency;
-
-@property (nonatomic) float yGyro;
-@property (nonatomic) float xGyro;
 
 - (int)lives;
 - (void)setLives:(int)lives;

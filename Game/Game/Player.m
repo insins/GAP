@@ -20,7 +20,7 @@
         
         self.fish = [SKSpriteNode spriteNodeWithImageNamed:path];
         
-        path = [[NSBundle mainBundle] pathForResource:@"bell1" ofType:@"png" inDirectory:@"player"];
+        path = [[NSBundle mainBundle] pathForResource:@"bell3" ofType:@"png" inDirectory:@"player"];
         
         self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
         

@@ -12,13 +12,12 @@
 
 @synthesize motionManager = _motionManager;
 @synthesize frequency = _frequency;
-@synthesize xGyro = _xGyro;
-@synthesize yGyro = _yGyro;
 @synthesize player = _player;
 @synthesize background = _background;
 @synthesize world = _world;
 @synthesize lives = _lives;
 @synthesize level = _level;
+@synthesize interval = _interval;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -31,8 +30,8 @@
         
         self.frequency = 60;
         
-        self.xGyro = 0;
-        self.yGyro = 0;
+        self.interval = 1;
+        self.difficulty = 0;
         
         self.motionManager = [[CMMotionManager alloc] init];
         self.motionManager.gyroUpdateInterval = 1/self.frequency;
@@ -73,10 +72,7 @@
     
     //NSLog(@"rpy [%0.2f, %0.2f, %0.2f]", roll, pitch, yaw);
     
-    self.xGyro = pitch;
-    self.yGyro = roll;
-    
-    self.player.position = CGPointMake(self.frame.size.width/2 + (self.frame.size.width/2)*(roll/1.5),self.frame.size.height/2 - (self.frame.size.height/4)*(pitch/1.5));
+    self.player.position = CGPointMake(self.frame.size.width/2 + (self.frame.size.width/2)*(roll),self.frame.size.height/2 - (self.frame.size.height/4)*(pitch/5));
     
     //[(World*)self.world moveEnemies];
     
@@ -85,9 +81,14 @@
     
     int yPos = self.world.position.y;
     
-    if (!(yPos%200)) {
-        //NSLog(@"%i: deelbaar", yPos);
+    if (!(yPos%self.interval)) {
         [(World*)self.world updateObjects];
+        self.interval = round((800-self.difficulty)/4);
+        NSLog(@"%i", self.difficulty);
+        if(self.difficulty<270){
+            self.difficulty += 1;
+        }
+        
     }
 }
 

@@ -49,6 +49,13 @@
         //add enemy
         SKNode *nmy = [[Enemy alloc] init];
         nmy.position = CGPointMake(arc4random_uniform(self.frame.size.width-60)+30, self.frame.size.height-self.position.y);
+        
+        SKAction *moveLeft = [SKAction moveTo:CGPointMake(nmy.position.x - 60, nmy.position.y) duration:1];
+        SKAction *moveRight = [SKAction moveTo:CGPointMake(nmy.position.x + 60, nmy.position.y) duration:1];
+        SKAction *move = [SKAction sequence:@[moveLeft,moveRight]];
+        
+        [nmy runAction:[SKAction repeatActionForever:move]];
+        
         [self addChild:nmy];
     }
     
