@@ -70,30 +70,30 @@
     float roll = (currAttitude.roll > 1) ? 1 : ((currAttitude.roll < -1) ? -1 : currAttitude.roll);
     float pitch = (currAttitude.pitch > 1) ? 1 : ((currAttitude.pitch < 0) ? 0 : currAttitude.pitch);
     
-    float newY = self.frame.size.height/2 - (self.frame.size.height/4)*((pitch-.5)/3);
-    float newX = self.frame.size.width/2 + (self.frame.size.width/2)*(roll);
+    float newY = self.frame.size.height / 2 - (self.frame.size.height / 4) * ((pitch - .5) / 3);
+    float newX = self.frame.size.width / 2 + (self.frame.size.width / 2) * roll;
     
-    if (fabsf(self.player.position.x - newX) < self.frame.size.width/2) self.player.position = CGPointMake(newX,newY);
+    if (fabsf(self.player.position.x - newX) < self.frame.size.width / 2) self.player.position = CGPointMake(newX, newY);
     
     //Move bg en world
-    self.world.position = CGPointMake(self.world.position.x,self.world.position.y-1);
-    self.yPos ++;
+    self.world.position = CGPointMake(self.world.position.x, self.world.position.y - 1);
+    self.yPos++;
     
-    if (!(self.yPos%self.interval)) {
+    if (!(self.yPos%self.interval)){
         
         self.yPos = 1;
-        self.interval = round((3200-self.difficulty)/8);
+        self.interval = round((3200 - self.difficulty) / 8);
         [(World*)self.world updateObjects];
         
-        int new = self.difficulty+64;
+        int new = self.difficulty + 64;
         if(new < 1680){
             self.difficulty = new;
         }else if(self.level < 3){
             self.countUp ++;
-            if (self.countUp == 16*self.level) {
+            if (self.countUp == 16 * self.level) {
                 
                 self.level ++;
-                self.difficulty = (self.level-1)*128;
+                self.difficulty = (self.level - 1) * 128;
                 self.countUp = 0;
             }
         }
