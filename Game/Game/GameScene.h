@@ -21,6 +21,8 @@
 @property (nonatomic, strong) SKNode *background;
 @property (nonatomic, strong) SKNode *world;
 
+@property (nonatomic) int countUp;
+@property (nonatomic) int yPos;
 @property (nonatomic) int interval;
 @property (nonatomic) int difficulty;
 

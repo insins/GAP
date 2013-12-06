@@ -31,7 +31,8 @@
         self.frequency = 60;
         
         self.interval = 1;
-        self.difficulty = 0;
+        self.difficulty = 1;
+        self.countUp = 0;
         
         self.motionManager = [[CMMotionManager alloc] init];
         self.motionManager.gyroUpdateInterval = 1/self.frequency;
@@ -42,7 +43,7 @@
         
         [self initPhysics];
         
-        self.background = [[Background alloc]init];
+        self.background = [[Background alloc] init];
         
         self.player = [[Player alloc] init];
         self.player.position = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
@@ -66,27 +67,35 @@
     CMDeviceMotion *currMotion = self.motionManager.deviceMotion;
     
     CMAttitude *currAttitude = currMotion.attitude;
-    float roll = currAttitude.roll;
-    float pitch = currAttitude.pitch;
-    float yaw = currAttitude.yaw;
+    float roll = (currAttitude.roll > 1) ? 1 : ((currAttitude.roll < -1) ? -1 : currAttitude.roll);
+    float pitch = (currAttitude.pitch > 1) ? 1 : ((currAttitude.pitch < 0) ? 0 : currAttitude.pitch);
     
-    //NSLog(@"rpy [%0.2f, %0.2f, %0.2f]", roll, pitch, yaw);
+    float newY = self.frame.size.height/2 - (self.frame.size.height/4)*((pitch-.5)/3);
+    float newX = self.frame.size.width/2 + (self.frame.size.width/2)*(roll);
     
-    self.player.position = CGPointMake(self.frame.size.width/2 + (self.frame.size.width/2)*(roll),self.frame.size.height/2 - (self.frame.size.height/4)*(pitch/5));
-    
-    //[(World*)self.world moveEnemies];
+    if (fabsf(self.player.position.x - newX) < self.frame.size.width/2) self.player.position = CGPointMake(newX,newY);
     
     //Move bg en world
     self.world.position = CGPointMake(self.world.position.x,self.world.position.y-1);
+    self.yPos ++;
     
-    int yPos = self.world.position.y;
-    
-    if (!(yPos%self.interval)) {
+    if (!(self.yPos%self.interval)) {
+        
+        self.yPos = 1;
+        self.interval = round((3200-self.difficulty)/8);
         [(World*)self.world updateObjects];
-        self.interval = round((800-self.difficulty)/4);
-        NSLog(@"%i", self.difficulty);
-        if(self.difficulty<270){
-            self.difficulty += 1;
+        
+        int new = self.difficulty+64;
+        if(new < 1680){
+            self.difficulty = new;
+        }else if(self.level < 3){
+            self.countUp ++;
+            if (self.countUp == 16*self.level) {
+                
+                self.level ++;
+                self.difficulty = (self.level-1)*128;
+                self.countUp = 0;
+            }
         }
         
     }
