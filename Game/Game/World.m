@@ -46,13 +46,6 @@
             [self addChild:itm];
         }
         
-        if (luck <= 3) {
-            //bad luck
-            
-        }else if(luck >= 13){
-            //good luck
-        }
-        
     }else{
         //add enemy
         SKNode *nmy = [[Enemy alloc] init];
@@ -65,6 +58,13 @@
         [nmy runAction:[SKAction repeatActionForever:move]];
         
         [self addChild:nmy];
+        
+        if (luck <= 3) {
+            //bad luck
+            
+        }else if(luck >= 13){
+            //good luck
+        }
     }
     
 }
