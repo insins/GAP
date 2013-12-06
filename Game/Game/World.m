@@ -98,7 +98,7 @@
         obj = [[Item alloc] initWithType:type];
     }
     
-    obj.position = CGPointMake(xPos, self.frame.size.height - self.position.y + (arc4random_uniform(5)) * 15);
+    obj.position = CGPointMake(xPos, self.frame.size.height - self.position.y + (arc4random_uniform(5)) * 25);
     return obj;
 }
 
