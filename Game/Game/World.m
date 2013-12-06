@@ -26,7 +26,7 @@
     // 1/20 items = powerup
     
     int itmNmy = round(arc4random_uniform(8)) + 1;
-    int luck = round(arc4random_uniform(4));
+    int luck = round(arc4random_uniform(16)) + 1;
     
     if (itmNmy < 3) {
     
@@ -46,10 +46,10 @@
             [self addChild:itm];
         }
         
-        if (luck == 1) {
+        if (luck <= 3) {
             //bad luck
             
-        }else if(luck == 4){
+        }else if(luck >= 13){
             //good luck
         }
         
