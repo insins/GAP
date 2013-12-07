@@ -10,8 +10,10 @@
 
 @implementation Enemy
 
--(id)init{
+-(id)initWithLevel:(int)level{
     if (self = [super init]) {
+        
+        self.level = level;
     
         NSString *path = [[NSBundle mainBundle] pathForResource:@"jelly" ofType:@"png" inDirectory:@"powerups"];
         

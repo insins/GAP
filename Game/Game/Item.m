@@ -10,8 +10,11 @@
 
 @implementation Item
 
--(id)initWithType:(NSString*)type{
+-(id)initWithType:(NSString*)type level:(int)level{
     if (self = [super init]) {
+        
+        self.level = level;
+        NSLog(@"%i", self.level);
         
         /*Types:
             "p" = powerup
@@ -43,8 +46,10 @@
 
 -(SKSpriteNode*)createPowerup{
     
+    self.power = @"turtle";
+    
     //generate path (random)
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"turtle" ofType:@"png" inDirectory:@"powerups"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:self.power ofType:@"png" inDirectory:@"powerups"];
     SKSpriteNode *powerup = [SKSpriteNode spriteNodeWithImageNamed:path];
     
     return powerup;
@@ -53,7 +58,7 @@
 -(SKSpriteNode*)createCollectorItem{
     
     //generate path (adhv level)
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"item1" ofType:@"png" inDirectory:@"items"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"item%i", self.level] ofType:@"png" inDirectory:@"items"];
     SKSpriteNode *item = [SKSpriteNode spriteNodeWithImageNamed:path];
     
     return item;

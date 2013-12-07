@@ -11,6 +11,7 @@
 @implementation World
 
 @synthesize frame = _frame;
+@synthesize level = _level;
 
 -(id)initWithFrame:(CGRect)frame{
     if (self = [super init]) {
@@ -100,9 +101,9 @@
     SKNode *obj;
     
     if([type isEqualToString:@"e"]){
-        obj = [[Enemy alloc] init];
+        obj = [[Enemy alloc] initWithLevel:self.level];
     }else{
-        obj = [[Item alloc] initWithType:type];
+        obj = [[Item alloc] initWithType:type level:self.level];
     }
     
     obj.position = CGPointMake(xPos, yPos);
@@ -124,6 +125,14 @@
         SKNode *itm = [self nodeWithType:@"c" xPos:xPos yPos:yPos];
         [self addChild:itm];
     }
+}
+
+-(int)level{
+    return _level;
+}
+
+-(void)setLevel:(int)level{
+    _level = level;
 }
 
 @end

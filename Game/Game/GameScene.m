@@ -23,6 +23,7 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
+        self.world = [[World alloc] initWithFrame:self.frame];
         self.lives = 3;
         self.level = 1;
         
@@ -47,8 +48,6 @@
         
         self.player = [[Player alloc] init];
         self.player.position = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
-        
-        self.world = [[World alloc] initWithFrame:self.frame];
         
         [self addChild:self.background];
         [self addChild:self.player];
@@ -129,6 +128,12 @@
         
         self.collected++;
         
+    }else if((first.categoryBitMask & playerCategory) != 0 && (second.categoryBitMask & powerupCategory) != 0){
+        Player *pl = (Player *)first.node;
+        Item *pwr = (Item *)second.node;
+        [pwr removeFromParent];
+        
+        [pl addPower:pwr.power];
     }
 }
 
@@ -158,6 +163,8 @@
     _level = level;
     
     //Setup new bg, enemies & items
+    World *w = (World*) self.world;
+    w.level = level;
 }
 
 @end

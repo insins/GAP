@@ -50,7 +50,7 @@
 }
 
 -(void)addPower:(NSString*)type{
-    
+    NSLog(@"%@", type);
 }
 
 @end

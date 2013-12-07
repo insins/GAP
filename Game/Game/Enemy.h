@@ -10,4 +10,8 @@
 
 @interface Enemy : SKNode
 
+@property (nonatomic) int level;
+
+-(id)initWithLevel:(int)level;
+
 @end
