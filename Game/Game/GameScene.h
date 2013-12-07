@@ -11,6 +11,7 @@
 #import "Player.h"
 #import "Background.h"
 #import "World.h"
+#import "GameFinishedScene.h"
 
 @import CoreMotion;
 

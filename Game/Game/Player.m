@@ -21,17 +21,10 @@
         
         self.fish = [SKSpriteNode spriteNodeWithImageNamed:path];
         
-        path = [[NSBundle mainBundle] pathForResource:@"bell3" ofType:@"png" inDirectory:@"player"];
+        path = [[NSBundle mainBundle] pathForResource:@"bell" ofType:@"png" inDirectory:@"player"];
         
         self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
-        
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.bell.size.width/2];
-        self.physicsBody.dynamic = YES;
-        self.physicsBody.affectedByGravity = NO;
-        self.physicsBody.categoryBitMask = playerCategory;
-        self.physicsBody.contactTestBitMask = monsterCategory;
-        self.physicsBody.collisionBitMask = 0;
-        self.physicsBody.usesPreciseCollisionDetection = YES;
+        [self scaleBell:3];
         
         [self addChild:self.bell];
         [self addChild:self.fish];
@@ -42,13 +35,18 @@
 
 -(void)scaleBell:(int)lives{
     
-    [self removeChildrenInArray:@[self.bell]];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"bell%i", lives]  ofType:@"png" inDirectory:@"player"];
-    
-    self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
-    
-    [self addChild:self.bell];
+    [self.bell setScale:.18+lives*.07];
+    [self resetPhysicsBody];
+}
+
+-(void)resetPhysicsBody{
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.bell.size.width/2];
+    self.physicsBody.dynamic = YES;
+    self.physicsBody.affectedByGravity = NO;
+    self.physicsBody.categoryBitMask = playerCategory;
+    self.physicsBody.contactTestBitMask = monsterCategory;
+    self.physicsBody.collisionBitMask = 0;
+    self.physicsBody.usesPreciseCollisionDetection = YES;
 }
 
 -(void)addPower:(NSString*)type{

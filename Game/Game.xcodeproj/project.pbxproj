@@ -33,6 +33,7 @@
 		EA6698F7184B845500AF6A87 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698F6184B845500AF6A87 /* Background.m */; };
 		EA6698FA184B846D00AF6A87 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698F9184B846D00AF6A87 /* Item.m */; };
 		EA6698FD184BA9CD00AF6A87 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698FC184BA9CD00AF6A87 /* Enemy.m */; };
+		EA756A4418536A960069301E /* GameFinishedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA756A4318536A960069301E /* GameFinishedScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		EA6698F9184B846D00AF6A87 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		EA6698FB184BA9CD00AF6A87 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		EA6698FC184BA9CD00AF6A87 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		EA756A4218536A960069301E /* GameFinishedScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameFinishedScene.h; sourceTree = "<group>"; };
+		EA756A4318536A960069301E /* GameFinishedScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameFinishedScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				EA6695961844A62900AF6A87 /* Layers */,
+				EA756A4118536A7C0069301E /* GameFinished */,
 				E8469BA0184CDD9E00D1BC42 /* GameScene */,
 			);
 			name = Game;
@@ -292,6 +296,15 @@
 				E8469BA1184CDDBD00D1BC42 /* Enemy */,
 			);
 			name = Layers;
+			sourceTree = "<group>";
+		};
+		EA756A4118536A7C0069301E /* GameFinished */ = {
+			isa = PBXGroup;
+			children = (
+				EA756A4218536A960069301E /* GameFinishedScene.h */,
+				EA756A4318536A960069301E /* GameFinishedScene.m */,
+			);
+			name = GameFinished;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,6 +412,7 @@
 			files = (
 				EA6698FA184B846D00AF6A87 /* Item.m in Sources */,
 				EA66956D18448E9B00AF6A87 /* StartScene.m in Sources */,
+				EA756A4418536A960069301E /* GameFinishedScene.m in Sources */,
 				EA66956A18448E9B00AF6A87 /* ViewController.m in Sources */,
 				EA6695951844A13900AF6A87 /* AchievementsScene.m in Sources */,
 				EA6698F7184B845500AF6A87 /* Background.m in Sources */,

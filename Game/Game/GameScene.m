@@ -59,7 +59,9 @@
 }
 
 -(void)gameOver{
-    
+    SKTransition *reveal = [SKTransition pushWithDirection:SKTransitionDirectionDown duration:0.5];
+    SKScene *gfScene = [[GameFinishedScene alloc] initWithSize:self.frame.size collected:self.collected score:self.score];
+    [self.view presentScene:gfScene transition:reveal];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
@@ -74,6 +76,8 @@
     float newX = self.frame.size.width / 2 + (self.frame.size.width / 3) * 2 * roll;
     
     if (fabsf(self.player.position.x - newX) < self.frame.size.width / 2) self.player.position = CGPointMake(newX, newY);
+    
+    self.player.zRotation = roll / 2;
     
     //Move bg en world
     self.world.position = CGPointMake(self.world.position.x, self.world.position.y - 1);
@@ -138,9 +142,12 @@
 }
 
 - (void)setLives:(int)lives{
-    _lives = lives;
-    
-    [(Player*)self.player scaleBell:lives];
+    if (lives > 0) {
+        _lives = lives;
+        [(Player*)self.player scaleBell:lives];
+    }else{
+        [self gameOver];
+    }
 }
 
 - (int)level{
