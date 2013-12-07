@@ -67,11 +67,11 @@
     CMDeviceMotion *currMotion = self.motionManager.deviceMotion;
     
     CMAttitude *currAttitude = currMotion.attitude;
-    float roll = (currAttitude.roll > 1) ? 1 : ((currAttitude.roll < -1) ? -1 : currAttitude.roll);
+    float roll = (currAttitude.roll > .5) ? .5 : ((currAttitude.roll < -.5) ? -.5 : currAttitude.roll);
     float pitch = (currAttitude.pitch > 1) ? 1 : ((currAttitude.pitch < 0) ? 0 : currAttitude.pitch);
     
-    float newY = self.frame.size.height / 2 - (self.frame.size.height / 4) * ((pitch - .5) / 3);
-    float newX = self.frame.size.width / 2 + (self.frame.size.width / 2) * roll;
+    float newY = self.frame.size.height / 2 - (self.frame.size.height / 2.5) * ((pitch - .75) / 2);
+    float newX = self.frame.size.width / 2 + (self.frame.size.width / 3) * 2 * roll;
     
     if (fabsf(self.player.position.x - newX) < self.frame.size.width / 2) self.player.position = CGPointMake(newX, newY);
     
@@ -79,20 +79,20 @@
     self.world.position = CGPointMake(self.world.position.x, self.world.position.y - 1);
     self.yPos++;
     
-    if (!(self.yPos%self.interval)){
+    if (!(self.yPos % self.interval)){
         
         self.yPos = 1;
         self.interval = round((3200 - self.difficulty) / 8);
         [(World*)self.world updateObjects];
         
-        int new = self.difficulty + 64;
-        if(new < 1680){
+        int new = self.difficulty + 60;
+        if(new < 1500){
             self.difficulty = new;
         }else if(self.level < 3){
             self.countUp ++;
             if (self.countUp == 16 * self.level) {
                 
-                self.level ++;
+                self.level++;
                 self.difficulty = (self.level - 1) * 128;
                 self.countUp = 0;
             }
@@ -101,8 +101,36 @@
     }
 }
 
+-(void)didBeginContact:(SKPhysicsContact *)contact{
+    
+    SKPhysicsBody *first, *second;
+    
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        first = contact.bodyA;
+        second = contact.bodyB;
+    }else{
+        first = contact.bodyB;
+        second = contact.bodyA;
+    }
+    
+    if ((first.categoryBitMask & monsterCategory) != 0 && (second.categoryBitMask & playerCategory) != 0) {
+        SKSpriteNode *monster = (SKSpriteNode *)first.node;
+        [monster removeFromParent];
+
+        self.lives--;
+        
+    }else if((first.categoryBitMask & playerCategory) != 0 && (second.categoryBitMask & itemCategory) != 0){
+        SKSpriteNode *item = (SKSpriteNode *)second.node;
+        [item removeFromParent];
+        
+        self.collected++;
+        
+    }
+}
+
 -(void)initPhysics{
     NSLog(@"gravity: %f", self.physicsWorld.gravity.dy);
+    self.physicsWorld.contactDelegate = self;
 }
 
 - (int)lives{

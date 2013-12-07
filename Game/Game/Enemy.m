@@ -15,7 +15,14 @@
     
         NSString *path = [[NSBundle mainBundle] pathForResource:@"jelly" ofType:@"png" inDirectory:@"powerups"];
         
-        SKNode *test = [SKSpriteNode spriteNodeWithImageNamed:path];
+        SKSpriteNode *test = [SKSpriteNode spriteNodeWithImageNamed:path];
+        
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:test.size.width/2];
+        self.physicsBody.dynamic = YES;
+        self.physicsBody.affectedByGravity = NO;
+        self.physicsBody.categoryBitMask = monsterCategory;
+        self.physicsBody.contactTestBitMask = playerCategory;
+        self.physicsBody.collisionBitMask = 0;
         
         [self addChild:test];
         

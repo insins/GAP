@@ -26,19 +26,24 @@
     // 1/20 items = powerup
     
     int itmNmy = round(arc4random_uniform(8)) + 1;
-    int luck = round(arc4random_uniform(16)) + 1;
+    self.luck = (self.luck <= 2) ? round(arc4random_uniform(16)) + 3 : ((self.luck >= 13) ? round(arc4random_uniform(12)) + 1 : round(arc4random_uniform(16)) + 1);
     
-    int pos = arc4random_uniform(self.frame.size.width - 60) + 30;
-    pos = (pos > self.frame.size.width - 20) ? self.frame.size.width - 20 : ((pos < 20) ? 20 : pos);
+    int xPos = arc4random_uniform(self.frame.size.width - 60) + 30;
+    xPos = (xPos > self.frame.size.width - 20) ? self.frame.size.width - 20 : ((xPos < 20) ? 20 : xPos);
     
-    if (itmNmy < 3) {
+    int yPos = self.frame.size.height - self.position.y;
+    
+    if (itmNmy < 3 && self.counter < 3) {
         
-        [self createItem:pos];
+        self.counter++;
+        [self createItemX:xPos Y:yPos];
         
     }else{
+        self.counter = 0;
+        
         //add enemy
         
-        SKNode *nmy = [self nodeWithType:@"e" xPos:pos];
+        SKNode *nmy = [self nodeWithType:@"e" xPos:xPos yPos:yPos];
         
         SKAction *action = [self actionForXPos:nmy.position.x yPos:nmy.position.y];
         
@@ -46,20 +51,21 @@
         
         [self addChild:nmy];
         
-        int pos2 = 0;
+        int xPos2 = self.frame.size.width - nmy.position.x;
         
-        if (nmy.position.x < self.frame.size.width / 2) {
-            pos2 = nmy.position.x + self.frame.size.width / arc4random_uniform(4) + 2;
-        }else{
-            pos2 = nmy.position.x - self.frame.size.width / arc4random_uniform(4) + 2;
+        if (nmy.position.x > self.frame.size.width / 4 && nmy.position.x < self.frame.size.width / 2) {
+            xPos2 = nmy.position.x + self.frame.size.width / 3;
+        }else if(nmy.position.x < (self.frame.size.width * 3) / 4  && nmy.position.x > self.frame.size.width / 2){
+            xPos2 = nmy.position.x - self.frame.size.width / 3;
         }
         
-        pos2 = (pos2 > self.frame.size.width - 20) ? self.frame.size.width - 20 : ((pos2 < 20) ? 20 : pos2);
+        xPos2 = (xPos2 > self.frame.size.width - 20) ? self.frame.size.width - 20 : ((xPos2 < 20) ? 20 : xPos2);
         
-        if (luck <= 2) {
+        if (self.luck <= 2) {
             //bad luck
+            int yPos2 = self.frame.size.height - self.position.y + (arc4random_uniform(5) + 10) * 10;
             
-            SKNode *nmy2 = [self nodeWithType:@"e" xPos:pos2];
+            SKNode *nmy2 = [self nodeWithType:@"e" xPos:xPos2 yPos:yPos2];
             
             action = [self actionForXPos:nmy2.position.x yPos:nmy2.position.y];
             
@@ -67,13 +73,14 @@
             
             [self addChild:nmy2];
             
-        }else if(luck >= 13){
+        }else if(self.luck >= 13){
             //good luck
+            int yPos2 = self.frame.size.height - self.position.y + (arc4random_uniform(10) + 5) * 10;
             
             if (nmy.position.x < self.frame.size.width / 2) {
-                [self createItem:pos2];
+                [self createItemX:xPos2 Y:yPos2];
             }else{
-                [self createItem:pos2];
+                [self createItemX:xPos2 Y:yPos2];
             }
         }
     }
@@ -88,7 +95,7 @@
     return move;
 }
 
--(SKNode*) nodeWithType:(NSString*)type xPos:(int)xPos{
+-(SKNode*) nodeWithType:(NSString*)type xPos:(int)xPos yPos:(int)yPos{
     
     SKNode *obj;
     
@@ -98,22 +105,23 @@
         obj = [[Item alloc] initWithType:type];
     }
     
-    obj.position = CGPointMake(xPos, self.frame.size.height - self.position.y + (arc4random_uniform(5)) * 25);
+    obj.position = CGPointMake(xPos, yPos);
+    
     return obj;
 }
 
--(void) createItem:(int)xPos{
+-(void) createItemX:(int)xPos Y:(int)yPos{
     int pwrItm = round(arc4random_uniform(20)) + 1;
     
     if(pwrItm == 1){
         //add powerup
         
-        SKNode *pwr = [self nodeWithType:@"p" xPos:xPos];
+        SKNode *pwr = [self nodeWithType:@"p" xPos:xPos yPos:yPos];
         [self addChild:pwr];
     }else{
         //add item
         
-        SKNode *itm = [self nodeWithType:@"c" xPos:xPos];
+        SKNode *itm = [self nodeWithType:@"c" xPos:xPos yPos:yPos];
         [self addChild:itm];
     }
 }

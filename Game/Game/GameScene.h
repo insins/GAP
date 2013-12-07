@@ -14,7 +14,7 @@
 
 @import CoreMotion;
 
-@interface GameScene : SKScene
+@interface GameScene : SKScene <SKPhysicsContactDelegate>
 
 @property (nonatomic, strong) SKNode *pause;
 @property (nonatomic, strong) SKNode *player;
@@ -26,6 +26,8 @@
 @property (nonatomic) int interval;
 @property (nonatomic) int difficulty;
 
+@property (nonatomic) int collected;
+@property (nonatomic) int score;
 @property (nonatomic) int lives;
 @property (nonatomic) int level;
 

@@ -18,33 +18,43 @@
             "c" = collector item
         */
         
+        SKSpriteNode *obj;
+        
         if ([type isEqual:@"p"]) {
-            [self addChild:[self createPowerup]];
+            obj = [self createPowerup];
+            self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:obj.size.width/2];
+            self.physicsBody.categoryBitMask = powerupCategory;
         }else if([type isEqual:@"c"]){
-            [self addChild:[self createCollectorItem]];
+            obj = [self createCollectorItem];
+            self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:obj.size];
+            self.physicsBody.categoryBitMask = itemCategory;
         }
         
+        self.physicsBody.dynamic = YES;
+        self.physicsBody.affectedByGravity = NO;
+        self.physicsBody.contactTestBitMask = playerCategory;
+        self.physicsBody.collisionBitMask = 0;
+        
+        [self addChild:obj];
     }
     
     return self;
 }
 
--(SKNode*)createPowerup{
+-(SKSpriteNode*)createPowerup{
     
     //generate path (random)
     NSString *path = [[NSBundle mainBundle] pathForResource:@"turtle" ofType:@"png" inDirectory:@"powerups"];
-    
-    SKNode *powerup = [SKSpriteNode spriteNodeWithImageNamed:path];
+    SKSpriteNode *powerup = [SKSpriteNode spriteNodeWithImageNamed:path];
     
     return powerup;
 }
 
--(SKNode*)createCollectorItem{
+-(SKSpriteNode*)createCollectorItem{
     
     //generate path (adhv level)
     NSString *path = [[NSBundle mainBundle] pathForResource:@"item1" ofType:@"png" inDirectory:@"items"];
-    
-    SKNode *item = [SKSpriteNode spriteNodeWithImageNamed:path];
+    SKSpriteNode *item = [SKSpriteNode spriteNodeWithImageNamed:path];
     
     return item;
 }

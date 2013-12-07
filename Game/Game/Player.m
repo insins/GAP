@@ -1,3 +1,4 @@
+
 //
 //  Player.m
 //  Game
@@ -23,6 +24,14 @@
         path = [[NSBundle mainBundle] pathForResource:@"bell3" ofType:@"png" inDirectory:@"player"];
         
         self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
+        
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.bell.size.width/2];
+        self.physicsBody.dynamic = YES;
+        self.physicsBody.affectedByGravity = NO;
+        self.physicsBody.categoryBitMask = playerCategory;
+        self.physicsBody.contactTestBitMask = monsterCategory;
+        self.physicsBody.collisionBitMask = 0;
+        self.physicsBody.usesPreciseCollisionDetection = YES;
         
         [self addChild:self.bell];
         [self addChild:self.fish];

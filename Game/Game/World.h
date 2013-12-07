@@ -14,6 +14,8 @@
 @interface World : SKNode
 
 @property (nonatomic) CGRect frame;
+@property (nonatomic) int luck;
+@property (nonatomic) int counter;
 
 -(void)updateObjects;
 -(id)initWithFrame:(CGRect)frame;
