@@ -1,3 +1,4 @@
+
 //
 //  Player.m
 //  Game
@@ -10,22 +11,23 @@
 
 @implementation Player
 
+@synthesize bell = _bell;
+@synthesize fish = _fish;
+
 -(id) init{
     
     if (self = [super init]) {
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"spook" ofType:@"png" inDirectory:@"images"];
-    
-        SKSpriteNode *fish = [SKSpriteNode spriteNodeWithImageNamed:path];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"fish" ofType:@"png" inDirectory:@"player"];
         
-        [self addChild:fish];
+        self.fish = [SKSpriteNode spriteNodeWithImageNamed:path];
         
-        path = [[NSBundle mainBundle] pathForResource:@"spook" ofType:@"png" inDirectory:@"images"];
+        path = [[NSBundle mainBundle] pathForResource:@"bell" ofType:@"png" inDirectory:@"player"];
         
-        SKSpriteNode *bell = [SKSpriteNode spriteNodeWithImageNamed:path];
+        self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
+        [self scaleBell:3];
         
-        [self addChild:bell];
-        
+<<<<<<< HEAD
         // -------------------------------------
         // Levens logica
         // -------------------------------------
@@ -46,6 +48,10 @@
         
         // Wanneer je het op true zet (bvb hij komt op een tijdstip dat hij de bel groter kan maken en een leven bijmaken)
         
+=======
+        [self addChild:self.bell];
+        [self addChild:self.fish];
+>>>>>>> 677b9b79bca4b93ccab25799f9a4b262e3e732bc
     
     }
     return self;
@@ -90,6 +96,7 @@
 }
 
 
+<<<<<<< HEAD
 // -------------------------------------
 // Functie voor bij het blazen
 // -------------------------------------
@@ -136,7 +143,26 @@
 // Functie voor de bel te laten scalen
 // -------------------------------------
 -(void)scaleBell{
+=======
+-(void)scaleBell:(int)lives{
+>>>>>>> 677b9b79bca4b93ccab25799f9a4b262e3e732bc
     
+    [self.bell setScale:.18+lives*.07];
+    [self resetPhysicsBody];
+}
+
+-(void)resetPhysicsBody{
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.bell.size.width/2];
+    self.physicsBody.dynamic = YES;
+    self.physicsBody.affectedByGravity = NO;
+    self.physicsBody.categoryBitMask = playerCategory;
+    self.physicsBody.contactTestBitMask = monsterCategory;
+    self.physicsBody.collisionBitMask = 0;
+    self.physicsBody.usesPreciseCollisionDetection = YES;
+}
+
+-(void)addPower:(NSString*)type{
+    NSLog(@"%@", type);
 }
 
 

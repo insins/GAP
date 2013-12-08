@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		E85C10D8185496BF001A0883 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85C10D7185496BF001A0883 /* AVFoundation.framework */; };
 		E85C10DA185496EC001A0883 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85C10D9185496EC001A0883 /* CoreAudio.framework */; };
+=======
+		EA3F10A0184F3F13007CD424 /* enemies in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109C184F3F13007CD424 /* enemies */; };
+		EA3F10A1184F3F13007CD424 /* items in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109D184F3F13007CD424 /* items */; };
+		EA3F10A2184F3F13007CD424 /* player in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109E184F3F13007CD424 /* player */; };
+		EA3F10A3184F3F13007CD424 /* powerups in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109F184F3F13007CD424 /* powerups */; };
+>>>>>>> 677b9b79bca4b93ccab25799f9a4b262e3e732bc
 		EA66955218448E9B00AF6A87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955118448E9B00AF6A87 /* Foundation.framework */; };
 		EA66955418448E9B00AF6A87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955318448E9B00AF6A87 /* CoreGraphics.framework */; };
 		EA66955618448E9B00AF6A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955518448E9B00AF6A87 /* UIKit.framework */; };
@@ -23,9 +30,6 @@
 		EA66957818448E9B00AF6A87 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66957718448E9B00AF6A87 /* XCTest.framework */; };
 		EA66957918448E9B00AF6A87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955118448E9B00AF6A87 /* Foundation.framework */; };
 		EA66957A18448E9B00AF6A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955518448E9B00AF6A87 /* UIKit.framework */; };
-		EA66958218448E9B00AF6A87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA66958018448E9B00AF6A87 /* InfoPlist.strings */; };
-		EA66958418448E9B00AF6A87 /* GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66958318448E9B00AF6A87 /* GameTests.m */; };
-		EA66958E18448F6F00AF6A87 /* images in Resources */ = {isa = PBXBuildFile; fileRef = EA66958D18448F6F00AF6A87 /* images */; };
 		EA6695921844A08A00AF6A87 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695911844A08A00AF6A87 /* GameScene.m */; };
 		EA6695951844A13900AF6A87 /* AchievementsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695941844A13900AF6A87 /* AchievementsScene.m */; };
 		EA6695991844A69100AF6A87 /* Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6695981844A69100AF6A87 /* Pause.m */; };
@@ -33,7 +37,8 @@
 		EA6698F4184B83D400AF6A87 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698F3184B83D400AF6A87 /* Player.m */; };
 		EA6698F7184B845500AF6A87 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698F6184B845500AF6A87 /* Background.m */; };
 		EA6698FA184B846D00AF6A87 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698F9184B846D00AF6A87 /* Item.m */; };
-		EA6698FD184BA9CD00AF6A87 /* Enemie.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698FC184BA9CD00AF6A87 /* Enemie.m */; };
+		EA6698FD184BA9CD00AF6A87 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698FC184BA9CD00AF6A87 /* Enemy.m */; };
+		EA756A4418536A960069301E /* GameFinishedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA756A4318536A960069301E /* GameFinishedScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +52,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		E85C10D7185496BF001A0883 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E85C10D9185496EC001A0883 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+=======
+		EA3F109C184F3F13007CD424 /* enemies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = enemies; sourceTree = "<group>"; };
+		EA3F109D184F3F13007CD424 /* items */ = {isa = PBXFileReference; lastKnownFileType = folder; path = items; sourceTree = "<group>"; };
+		EA3F109E184F3F13007CD424 /* player */ = {isa = PBXFileReference; lastKnownFileType = folder; path = player; sourceTree = "<group>"; };
+		EA3F109F184F3F13007CD424 /* powerups */ = {isa = PBXFileReference; lastKnownFileType = folder; path = powerups; sourceTree = "<group>"; };
+>>>>>>> 677b9b79bca4b93ccab25799f9a4b262e3e732bc
 		EA66954E18448E9B00AF6A87 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA66955118448E9B00AF6A87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA66955318448E9B00AF6A87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -68,10 +80,6 @@
 		EA66957018448E9B00AF6A87 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA66957618448E9B00AF6A87 /* GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA66957718448E9B00AF6A87 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EA66957F18448E9B00AF6A87 /* GameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameTests-Info.plist"; sourceTree = "<group>"; };
-		EA66958118448E9B00AF6A87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		EA66958318448E9B00AF6A87 /* GameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameTests.m; sourceTree = "<group>"; };
-		EA66958D18448F6F00AF6A87 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		EA6695901844A08A00AF6A87 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		EA6695911844A08A00AF6A87 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		EA6695931844A13900AF6A87 /* AchievementsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsScene.h; sourceTree = "<group>"; };
@@ -86,8 +94,10 @@
 		EA6698F6184B845500AF6A87 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		EA6698F8184B846D00AF6A87 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		EA6698F9184B846D00AF6A87 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		EA6698FB184BA9CD00AF6A87 /* Enemie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemie.h; sourceTree = "<group>"; };
-		EA6698FC184BA9CD00AF6A87 /* Enemie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemie.m; sourceTree = "<group>"; };
+		EA6698FB184BA9CD00AF6A87 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		EA6698FC184BA9CD00AF6A87 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		EA756A4218536A960069301E /* GameFinishedScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameFinishedScene.h; sourceTree = "<group>"; };
+		EA756A4318536A960069301E /* GameFinishedScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameFinishedScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,17 +184,58 @@
 		E8469BA1184CDDBD00D1BC42 /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
-				EA6698FB184BA9CD00AF6A87 /* Enemie.h */,
-				EA6698FC184BA9CD00AF6A87 /* Enemie.m */,
+				EA6698FB184BA9CD00AF6A87 /* Enemy.h */,
+				EA6698FC184BA9CD00AF6A87 /* Enemy.m */,
 			);
 			name = Enemy;
+			sourceTree = "<group>";
+		};
+		EA3F1041184F1BCB007CD424 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				EA66956218448E9B00AF6A87 /* AppDelegate.h */,
+				EA66956318448E9B00AF6A87 /* AppDelegate.m */,
+				EA66956818448E9B00AF6A87 /* ViewController.h */,
+				EA66956918448E9B00AF6A87 /* ViewController.m */,
+			);
+			name = Setup;
+			sourceTree = "<group>";
+		};
+		EA3F1042184F1BE5007CD424 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				EA66956B18448E9B00AF6A87 /* StartScene.h */,
+				EA66956C18448E9B00AF6A87 /* StartScene.m */,
+			);
+			name = Start;
+			sourceTree = "<group>";
+		};
+		EA3F1043184F1BF3007CD424 /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				EA6695931844A13900AF6A87 /* AchievementsScene.h */,
+				EA6695941844A13900AF6A87 /* AchievementsScene.m */,
+			);
+			name = Achievements;
+			sourceTree = "<group>";
+		};
+		EA3F1084184F2085007CD424 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				EA3F109C184F3F13007CD424 /* enemies */,
+				EA3F109D184F3F13007CD424 /* items */,
+				EA3F109E184F3F13007CD424 /* player */,
+				EA3F109F184F3F13007CD424 /* powerups */,
+			);
+			name = images;
+			path = Game/images;
 			sourceTree = "<group>";
 		};
 		EA66954518448E9B00AF6A87 = {
 			isa = PBXGroup;
 			children = (
+				EA3F1084184F2085007CD424 /* images */,
 				EA66955918448E9B00AF6A87 /* Game */,
-				EA66957D18448E9B00AF6A87 /* GameTests */,
 				EA66955018448E9B00AF6A87 /* Frameworks */,
 				EA66954F18448E9B00AF6A87 /* Products */,
 			);
@@ -216,19 +267,13 @@
 		EA66955918448E9B00AF6A87 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				EA3F1041184F1BCB007CD424 /* Setup */,
+				EA3F1042184F1BE5007CD424 /* Start */,
+				EA3F1043184F1BF3007CD424 /* Achievements */,
 				EA66958F1844A07600AF6A87 /* Game */,
-				EA66958D18448F6F00AF6A87 /* images */,
-				EA66956218448E9B00AF6A87 /* AppDelegate.h */,
-				EA66956318448E9B00AF6A87 /* AppDelegate.m */,
 				EA66956518448E9B00AF6A87 /* Main.storyboard */,
-				EA66956818448E9B00AF6A87 /* ViewController.h */,
-				EA66956918448E9B00AF6A87 /* ViewController.m */,
-				EA66956B18448E9B00AF6A87 /* StartScene.h */,
-				EA66956C18448E9B00AF6A87 /* StartScene.m */,
 				EA66957018448E9B00AF6A87 /* Images.xcassets */,
 				EA66955A18448E9B00AF6A87 /* Supporting Files */,
-				EA6695931844A13900AF6A87 /* AchievementsScene.h */,
-				EA6695941844A13900AF6A87 /* AchievementsScene.m */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -244,28 +289,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EA66957D18448E9B00AF6A87 /* GameTests */ = {
-			isa = PBXGroup;
-			children = (
-				EA66958318448E9B00AF6A87 /* GameTests.m */,
-				EA66957E18448E9B00AF6A87 /* Supporting Files */,
-			);
-			path = GameTests;
-			sourceTree = "<group>";
-		};
-		EA66957E18448E9B00AF6A87 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				EA66957F18448E9B00AF6A87 /* GameTests-Info.plist */,
-				EA66958018448E9B00AF6A87 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		EA66958F1844A07600AF6A87 /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				EA6695961844A62900AF6A87 /* Layers */,
+				EA756A4118536A7C0069301E /* GameFinished */,
 				E8469BA0184CDD9E00D1BC42 /* GameScene */,
 			);
 			name = Game;
@@ -282,6 +310,15 @@
 				E8469BA1184CDDBD00D1BC42 /* Enemy */,
 			);
 			name = Layers;
+			sourceTree = "<group>";
+		};
+		EA756A4118536A7C0069301E /* GameFinished */ = {
+			isa = PBXGroup;
+			children = (
+				EA756A4218536A960069301E /* GameFinishedScene.h */,
+				EA756A4318536A960069301E /* GameFinishedScene.m */,
+			);
+			name = GameFinished;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,9 +400,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA66958E18448F6F00AF6A87 /* images in Resources */,
+				EA3F10A1184F3F13007CD424 /* items in Resources */,
 				EA66955E18448E9B00AF6A87 /* InfoPlist.strings in Resources */,
+				EA3F10A0184F3F13007CD424 /* enemies in Resources */,
+				EA3F10A2184F3F13007CD424 /* player in Resources */,
 				EA66957118448E9B00AF6A87 /* Images.xcassets in Resources */,
+				EA3F10A3184F3F13007CD424 /* powerups in Resources */,
 				EA66956718448E9B00AF6A87 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,7 +414,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA66958218448E9B00AF6A87 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,11 +426,12 @@
 			files = (
 				EA6698FA184B846D00AF6A87 /* Item.m in Sources */,
 				EA66956D18448E9B00AF6A87 /* StartScene.m in Sources */,
+				EA756A4418536A960069301E /* GameFinishedScene.m in Sources */,
 				EA66956A18448E9B00AF6A87 /* ViewController.m in Sources */,
 				EA6695951844A13900AF6A87 /* AchievementsScene.m in Sources */,
 				EA6698F7184B845500AF6A87 /* Background.m in Sources */,
 				EA6695921844A08A00AF6A87 /* GameScene.m in Sources */,
-				EA6698FD184BA9CD00AF6A87 /* Enemie.m in Sources */,
+				EA6698FD184BA9CD00AF6A87 /* Enemy.m in Sources */,
 				EA6698F1184B839200AF6A87 /* World.m in Sources */,
 				EA6695991844A69100AF6A87 /* Pause.m in Sources */,
 				EA66956418448E9B00AF6A87 /* AppDelegate.m in Sources */,
@@ -404,7 +444,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA66958418448E9B00AF6A87 /* GameTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,14 +472,6 @@
 				EA66956618448E9B00AF6A87 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EA66958018448E9B00AF6A87 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA66958118448E9B00AF6A87 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

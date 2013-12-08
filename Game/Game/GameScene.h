@@ -11,22 +11,35 @@
 #import "Player.h"
 #import "Background.h"
 #import "World.h"
+#import "GameFinishedScene.h"
 
 @import CoreMotion;
 
-@interface GameScene : SKScene
+@interface GameScene : SKScene <SKPhysicsContactDelegate>
 
 @property (nonatomic, strong) SKNode *pause;
 @property (nonatomic, strong) SKNode *player;
 @property (nonatomic, strong) SKNode *background;
 @property (nonatomic, strong) SKNode *world;
 
+@property (nonatomic) int countUp;
+@property (nonatomic) int yPos;
+@property (nonatomic) int interval;
+@property (nonatomic) int difficulty;
+
+@property (nonatomic) int collected;
+@property (nonatomic) int score;
+@property (nonatomic) int lives;
+@property (nonatomic) int level;
 
 @property (nonatomic, strong) CMMotionManager *motionManager;
 
 @property (nonatomic) float frequency;
 
-@property (nonatomic) float yGyro;
-@property (nonatomic) float xGyro;
+- (int)lives;
+- (void)setLives:(int)lives;
+
+- (int)level;
+- (void)setLevel:(int)level;
 
 @end

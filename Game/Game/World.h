@@ -8,11 +8,20 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-#import "Enemie.h"
+#import "Enemy.h"
 #import "Item.h"
 
 @interface World : SKNode
 
--(void)moveEnemies;
+@property (nonatomic) CGRect frame;
+@property (nonatomic) int luck;
+@property (nonatomic) int counter;
+@property (nonatomic) int level;
+
+-(void)updateObjects;
+-(id)initWithFrame:(CGRect)frame;
+
+- (int)level;
+- (void)setLevel:(int)level;
 
 @end
