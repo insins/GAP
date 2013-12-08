@@ -8,6 +8,10 @@
 
 #import "World.h"
 
+// -------------------------------------
+// World class
+// -------------------------------------
+
 //World is de node die over tijd steeds naar onder beweegt
 //hier worden de items en enemies op toegevoegd
 
@@ -23,7 +27,12 @@
     return self;
 }
 
-//method om random een item/enemie/power toe te voegen
+// -------------------------------------
+// method om random een item/enemie/power
+// toe te voegen
+// -------------------------------------
+
+// wordt opgeroepen in GameScene class
 
 -(void)updateObjects{
     /*kansen*/
@@ -99,6 +108,10 @@
     
 }
 
+// -------------------------------------
+// Action creeeren voor enemie
+// -------------------------------------
+
 -(SKAction*) actionForXPos:(int)xPos yPos:(int)yPos{
     //laten bewegen adhv meegegeven x en y pos.
     
@@ -108,6 +121,15 @@
     
     return move;
 }
+
+// -------------------------------------
+// Node genereren
+// -------------------------------------
+
+//3 tyes:
+//# enemie (e)
+//# powerup (p)
+//# collectoritem (c)
 
 -(SKNode*) nodeWithType:(NSString*)type xPos:(int)xPos yPos:(int)yPos{
     
@@ -126,6 +148,10 @@
     return obj;
 }
 
+// -------------------------------------
+// Item aanmaken en aan world toevoegen
+// -------------------------------------
+
 -(void) createItemX:(int)xPos Y:(int)yPos{
     //random getal die bepaald of er een collect item/power wordt toegevoegd aan stage
     int pwrItm = round(arc4random_uniform(20)) + 1;
@@ -142,6 +168,12 @@
         [self addChild:itm];
     }
 }
+
+// -------------------------------------
+// current Level
+// -------------------------------------
+
+//(nodig om te weten welke soort enemies en items er mogen gegenereerd worden)
 
 -(int)level{
     return _level;

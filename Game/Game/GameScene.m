@@ -35,7 +35,10 @@
         self.difficulty = 1;
         self.countUp = 0;
         
-        //motionmanager instellen
+        // --------------------------------------
+        // motionmanager instellen
+        // --------------------------------------
+        
         self.motionManager = [[CMMotionManager alloc] init];
         self.motionManager.gyroUpdateInterval = 1/self.frequency;
         
@@ -54,15 +57,34 @@
         [self addChild:self.player];
         [self addChild:self.world];
         
+        Player *pl = (Player*)self.player;
+        pl.canPlayerBlow = YES;
+        
+        //luister naar event die wordt uitgestuurd als speler blaast en hij kan blazen
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addLive:) name:@"blow" object:nil];
+        
     }
     return self;
 }
 
+// --------------------------------------
+// Toon de gameover scene
+// --------------------------------------
+
 -(void)gameOver{
+    
     SKTransition *reveal = [SKTransition pushWithDirection:SKTransitionDirectionDown duration:0.5];
     SKScene *gfScene = [[GameFinishedScene alloc] initWithSize:self.frame.size collected:self.collected score:self.score];
     [self.view presentScene:gfScene transition:reveal];
 }
+
+// --------------------------------------
+// Deze method wordt per frame uitgevoerd
+// --------------------------------------
+
+//stel hier de positie van de player in
+//beweeg world (waar enemies en items op worden geplaatst)
+//voeg enemies en items toe aan world adhv interval
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
@@ -109,11 +131,38 @@
                 self.level++;
                 self.difficulty = (self.level - 1) * 128;
                 self.countUp = 0;
+                
+                //hier zou je bijvoorbeeld kunnen blazen
+                Player *pl = (Player*)self.player;
+                pl.canPlayerBlow = YES;
+                
             }
         }
         
     }
 }
+
+// --------------------------------------
+// Deze functie wordt uitgevoerd als speler
+// blaast en er leven mag verhoogd worden
+// --------------------------------------
+
+-(void) addLive:(id)sender{
+    self.lives++;
+}
+
+// -------------------------------------
+// Hitdetection
+// -------------------------------------
+
+// er zijn 5 categorieeen:
+// (volgens strength)
+
+// projectile
+// enemie
+// player
+// powerup
+// item
 
 -(void)didBeginContact:(SKPhysicsContact *)contact{
     
@@ -162,18 +211,45 @@
     self.physicsWorld.contactDelegate = self;
 }
 
+// -------------------------------------
+// Levens logica
+// -------------------------------------
+
+// Je begint met 3 levens ( je kan dan 4 keer in totaal geraakt worden)
+//zolang lives > 0, is het geen game over
+
 - (int)lives{
     return _lives;
 }
 
 - (void)setLives:(int)lives{
+    
+    Player *pl = (Player*)self.player;
+    _lives = lives;
+    
+    if (!(lives < 3 && lives >= 0)) {
+
+        //lives is > 3 dus player kan niet meer blazen
+        
+        pl.canPlayerBlow = NO;
+        //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"blow" object:nil];
+    }
+    
     if (lives > 0) {
-        _lives = lives;
-        [(Player*)self.player scaleBell:lives];
+        //re-scale bell adhv aantal leventjes
+        
+        [pl scaleBell:lives];
     }else{
-        [self gameOver];
+        //[self gameOver];
     }
 }
+
+// -------------------------------------
+// Levels
+// -------------------------------------
+
+//er zijn 3 levels, als je hoger raakt dan ga je naar volgend level
+//dat wordt bepaald in de update method ^^
 
 - (int)level{
     return _level;
