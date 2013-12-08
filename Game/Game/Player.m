@@ -147,11 +147,14 @@
 -(void)scaleBell:(int)lives{
 >>>>>>> 677b9b79bca4b93ccab25799f9a4b262e3e732bc
     
+    //bell scalen adhv aantal lives
     [self.bell setScale:.18+lives*.07];
     [self resetPhysicsBody];
 }
 
 -(void)resetPhysicsBody{
+    //physicsbody instellen adh grootte van bel
+    
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.bell.size.width/2];
     self.physicsBody.dynamic = YES;
     self.physicsBody.affectedByGravity = NO;
@@ -162,6 +165,8 @@
 }
 
 -(void)addPower:(NSString*)type{
+    //power geven aan player
+    //= visuals aanpassen en meer player intput creeren
     NSLog(@"%@", type);
 }
 

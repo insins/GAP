@@ -20,6 +20,7 @@
             "c" = collector item
         */
         
+        //obj aanmaken en physicsbody instellen
         SKSpriteNode *obj;
         
         if ([type isEqual:@"p"]) {

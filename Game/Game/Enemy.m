@@ -15,6 +15,11 @@
         
         self.level = level;
     
+        //adhv level zou een random enemie moeten worden aangemaakt
+        //per level zijn een 2tal verschillende enemies.
+        
+        //+physicsbody instellen
+        
         NSString *path = [[NSBundle mainBundle] pathForResource:@"jelly" ofType:@"png" inDirectory:@"powerups"];
         
         SKSpriteNode *test = [SKSpriteNode spriteNodeWithImageNamed:path];
