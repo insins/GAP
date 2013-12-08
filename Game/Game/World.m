@@ -8,6 +8,9 @@
 
 #import "World.h"
 
+//World is de node die over tijd steeds naar onder beweegt
+//hier worden de items en enemies op toegevoegd
+
 @implementation World
 
 @synthesize frame = _frame;
@@ -20,18 +23,22 @@
     return self;
 }
 
+//method om random een item/enemie/power toe te voegen
+
 -(void)updateObjects{
     /*kansen*/
     
     // 1-2 = items / 3-8 = enemies
     // 1/20 items = powerup
     
+    //random getal die bepaald of er een item/enemie wordt toegevoegd aan stage
     int itmNmy = round(arc4random_uniform(8)) + 1;
+    
+    //bepalen of je bad luck/good luck/neutraal
     self.luck = (self.luck <= 2) ? round(arc4random_uniform(16)) + 3 : ((self.luck >= 13) ? round(arc4random_uniform(12)) + 1 : round(arc4random_uniform(16)) + 1);
     
     int xPos = arc4random_uniform(self.frame.size.width - 60) + 30;
     xPos = (xPos > self.frame.size.width - 20) ? self.frame.size.width - 20 : ((xPos < 20) ? 20 : xPos);
-    
     int yPos = self.frame.size.height - self.position.y;
     
     if (itmNmy < 3 && self.counter < 3) {

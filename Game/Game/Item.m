@@ -14,7 +14,6 @@
     if (self = [super init]) {
         
         self.level = level;
-        NSLog(@"%i", self.level);
         
         /*Types:
             "p" = powerup
