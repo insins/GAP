@@ -7,10 +7,19 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreAudio/CoreAudioTypes.h>
 
 @interface Player : SKNode
 
+@property (nonatomic) Boolean * canPlayerBlow;
+@property (nonatomic) AVAudioRecorder *recorder;
+@property (nonatomic) NSTimer *levelTimer;
+@property (nonatomic) double lowPassResults;
+@property (nonatomic) int aantalLevens;
 
 -(void)scaleBell;
+-(void)checkLevens;
+-(void)checkBlazen;
 
 @end
