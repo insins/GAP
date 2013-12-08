@@ -27,7 +27,6 @@
         self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
         [self scaleBell:3];
         
-<<<<<<< HEAD
         // -------------------------------------
         // Levens logica
         // -------------------------------------
@@ -47,11 +46,9 @@
         _canPlayerBlow = false;
         
         // Wanneer je het op true zet (bvb hij komt op een tijdstip dat hij de bel groter kan maken en een leven bijmaken)
-        
-=======
+
         [self addChild:self.bell];
         [self addChild:self.fish];
->>>>>>> 677b9b79bca4b93ccab25799f9a4b262e3e732bc
     
     }
     return self;
@@ -96,7 +93,7 @@
 }
 
 
-<<<<<<< HEAD
+
 // -------------------------------------
 // Functie voor bij het blazen
 // -------------------------------------
@@ -142,10 +139,8 @@
 // -------------------------------------
 // Functie voor de bel te laten scalen
 // -------------------------------------
--(void)scaleBell{
-=======
+
 -(void)scaleBell:(int)lives{
->>>>>>> 677b9b79bca4b93ccab25799f9a4b262e3e732bc
     
     //bell scalen adhv aantal lives
     [self.bell setScale:.18+lives*.07];
