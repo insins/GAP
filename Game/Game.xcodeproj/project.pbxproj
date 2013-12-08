@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
 		E85C10D8185496BF001A0883 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85C10D7185496BF001A0883 /* AVFoundation.framework */; };
 		E85C10DA185496EC001A0883 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85C10D9185496EC001A0883 /* CoreAudio.framework */; };
-=======
 		EA3F10A0184F3F13007CD424 /* enemies in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109C184F3F13007CD424 /* enemies */; };
 		EA3F10A1184F3F13007CD424 /* items in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109D184F3F13007CD424 /* items */; };
 		EA3F10A2184F3F13007CD424 /* player in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109E184F3F13007CD424 /* player */; };
 		EA3F10A3184F3F13007CD424 /* powerups in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109F184F3F13007CD424 /* powerups */; };
->>>>>>> 677b9b79bca4b93ccab25799f9a4b262e3e732bc
 		EA66955218448E9B00AF6A87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955118448E9B00AF6A87 /* Foundation.framework */; };
 		EA66955418448E9B00AF6A87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955318448E9B00AF6A87 /* CoreGraphics.framework */; };
 		EA66955618448E9B00AF6A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA66955518448E9B00AF6A87 /* UIKit.framework */; };
@@ -52,15 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
 		E85C10D7185496BF001A0883 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E85C10D9185496EC001A0883 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-=======
 		EA3F109C184F3F13007CD424 /* enemies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = enemies; sourceTree = "<group>"; };
 		EA3F109D184F3F13007CD424 /* items */ = {isa = PBXFileReference; lastKnownFileType = folder; path = items; sourceTree = "<group>"; };
 		EA3F109E184F3F13007CD424 /* player */ = {isa = PBXFileReference; lastKnownFileType = folder; path = player; sourceTree = "<group>"; };
 		EA3F109F184F3F13007CD424 /* powerups */ = {isa = PBXFileReference; lastKnownFileType = folder; path = powerups; sourceTree = "<group>"; };
->>>>>>> 677b9b79bca4b93ccab25799f9a4b262e3e732bc
 		EA66954E18448E9B00AF6A87 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA66955118448E9B00AF6A87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA66955318448E9B00AF6A87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
