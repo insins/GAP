@@ -62,11 +62,7 @@
             self.recorder.meteringEnabled = YES;
             [self.recorder record];
             
-            NSLog(@"%i", self.recorder.recording);
-            
-            if (self.recorder.recording) {
-                self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
-            }
+            self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
             
         } else {
             NSLog(@"%@", [error description]);
@@ -85,17 +81,17 @@
 	double peakPowerForChannel = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
 	self.lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * self.lowPassResults;
 	
-    NSLog(@"%f", peakPowerForChannel);
+    //NSLog(@"%f", peakPowerForChannel);
     
     // Er wordt niet geblazen
-	if (0.70 < self.lowPassResults && self.lowPassResults < 0.95){
-        NSLog(@"Blowing");
+	if (!(0.70 < self.lowPassResults < 0.95)){
+        
         //event uitsturen om leven te verhogen
         if (self.canPlayerBlow){
+            NSLog(@"Blowing");
+
             [[NSNotificationCenter defaultCenter] postNotificationName:@"blow" object:self];
         }
-    }else{
-        //NSLog(@"no blowing");
     }
 }
 

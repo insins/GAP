@@ -225,22 +225,22 @@
 - (void)setLives:(int)lives{
     
     Player *pl = (Player*)self.player;
-    _lives = lives;
     
-    if (!(lives < 3 && lives >= 0)) {
-
-        //lives is > 3 dus player kan niet meer blazen
+    if (lives < 4) {
         
-        pl.canPlayerBlow = NO;
-        //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"blow" object:nil];
-    }
-    
-    if (lives > 0) {
+        _lives = lives;
         //re-scale bell adhv aantal leventjes
         
         [pl scaleBell:lives];
-    }else{
-        //[self gameOver];
+        
+        NSLog(@"%i", lives);
+        
+        if(lives < 1){
+            [self gameOver];
+        }
+        
+    }else if(lives >= 3){
+        pl.canPlayerBlow = NO;
     }
 }
 
