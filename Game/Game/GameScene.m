@@ -23,14 +23,14 @@
         /* Setup your scene here */
         
         self.world = [[World alloc] initWithFrame:self.frame];
-        self.level = 1;
+        self.level = 3;
         
         self.backgroundColor = [SKColor whiteColor];
         
         self.frequency = 60;
         
         self.interval = 1;
-        self.difficulty = 1;
+        self.difficulty = self.level * 150;
         self.countUp = 0;
         
         // --------------------------------------
@@ -125,7 +125,7 @@
             if (self.countUp == 16) {
                 //naar volgend level gaan. alle waarden terugzetten
                 self.level++;
-                self.difficulty = (self.level - 1) * 200;
+                self.difficulty = self.level * 150;
                 self.countUp = 0;
                 
             }
@@ -170,11 +170,7 @@
         Enemy *en = (Enemy*)monster;
         Player *pl = (Player*)self.player;
         
-        NSLog(@"%f", en.power);
-        
         [pl scaleBell:pl.size - en.power];
-        
-        //self.lives--;
         
     }else if((first.categoryBitMask & playerCategory) != 0 && (second.categoryBitMask & itemCategory) != 0){
         //player(first) hits item(second)
