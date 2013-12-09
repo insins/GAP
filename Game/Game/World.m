@@ -35,13 +35,6 @@
 // wordt opgeroepen in GameScene class
 
 -(void)updateObjects{
-    /*kansen*/
-    
-    // 1-2 = items / 3-8 = enemies
-    // 1/20 items = powerup
-    
-    //random getal die bepaald of er een item/enemie wordt toegevoegd aan stage
-    int itmNmy = round(arc4random_uniform(8)) + 1;
     
     //bepalen of je bad luck/good luck/neutraal
     self.luck = (self.luck <= 2) ? round(arc4random_uniform(16)) + 3 : ((self.luck >= 13) ? round(arc4random_uniform(12)) + 1 : round(arc4random_uniform(16)) + 1);
@@ -50,62 +43,52 @@
     int xPos = arc4random_uniform(self.frame.size.width - 60) + 30;
     xPos = (xPos > self.frame.size.width - 20) ? self.frame.size.width - 20 : ((xPos < 20) ? 20 : xPos);
     int yPos = self.frame.size.height - self.position.y;
-    
-    if (itmNmy < 3 && self.counter < 3) {
         
-        self.counter++;
-        [self createItemX:xPos Y:yPos];
+    //add enemy
         
-    }else{
-        self.counter = 0;
+    SKNode *nmy = [self nodeWithType:@"e" xPos:xPos yPos:yPos];
         
-        //add enemy
+    //action toevoegen aan enemy node
+    SKAction *action = [self actionForXPos:nmy.position.x yPos:nmy.position.y];
+    [nmy runAction:[SKAction repeatActionForever:action]];
         
-        SKNode *nmy = [self nodeWithType:@"e" xPos:xPos yPos:yPos];
+    [self addChild:nmy];
         
-        //action toevoegen aan enemy node
-        SKAction *action = [self actionForXPos:nmy.position.x yPos:nmy.position.y];
-        [nmy runAction:[SKAction repeatActionForever:action]];
+    //x pos instellen van 2e element die mogelijk aan stage moet worden toegevoegd
+    /*int xPos2 = self.frame.size.width - nmy.position.x;
         
-        [self addChild:nmy];
-        
-        //x pos instellen van 2e element die mogelijk aan stage moet worden toegevoegd
-        int xPos2 = self.frame.size.width - nmy.position.x;
-        
-        if (nmy.position.x > self.frame.size.width / 4 && nmy.position.x < self.frame.size.width / 2) {
-            xPos2 = nmy.position.x + self.frame.size.width / 3;
-        }else if(nmy.position.x < (self.frame.size.width * 3) / 4  && nmy.position.x > self.frame.size.width / 2){
-            xPos2 = nmy.position.x - self.frame.size.width / 3;
-        }
-        
-        xPos2 = (xPos2 > self.frame.size.width - 20) ? self.frame.size.width - 20 : ((xPos2 < 20) ? 20 : xPos2);
-        
-        //bij bad luck: 2 enemies ineens
-        //bij good luck: er komt ook een item bij
-        
-        if (self.luck <= 2) {
-            //bad luck: item aan stage toevoegen
-            //y pos instellen van 2e element die mogelijk aan stage moet worden toegevoegd
-            int yPos2 = self.frame.size.height - self.position.y + (arc4random_uniform(5) + 10) * 10;
-            
-            SKNode *nmy2 = [self nodeWithType:@"e" xPos:xPos2 yPos:yPos2];
-            
-            //action toevoegen aan enemy node
-            action = [self actionForXPos:nmy2.position.x yPos:nmy2.position.y];
-            [nmy2 runAction:[SKAction repeatActionForever:action]];
-            
-            [self addChild:nmy2];
-            
-        }else if(self.luck >= 13){
-            //good luck: enemie aan stage toevoegen
-            //y pos instellen van 2e element die mogelijk aan stage moet worden toegevoegd
-            int yPos2 = self.frame.size.height - self.position.y + (arc4random_uniform(10) + 5) * 10;
-            
-            //item aanmaken en toevoegen aan stage
-            [self createItemX:xPos2 Y:yPos2];
-        }
+    if (nmy.position.x > self.frame.size.width / 4 && nmy.position.x < self.frame.size.width / 2) {
+        xPos2 = nmy.position.x + self.frame.size.width / 3;
+    }else if(nmy.position.x < (self.frame.size.width * 3) / 4  && nmy.position.x > self.frame.size.width / 2){
+        xPos2 = nmy.position.x - self.frame.size.width / 3;
     }
     
+    xPos2 = (xPos2 > self.frame.size.width - 20) ? self.frame.size.width - 20 : ((xPos2 < 20) ? 20 : xPos2);
+    
+    //bij bad luck: 2 enemies ineens
+    //bij good luck: er komt ook een item bij
+    
+    if (self.luck <= 2) {
+        //bad luck: item aan stage toevoegen
+        //y pos instellen van 2e element die mogelijk aan stage moet worden toegevoegd
+        int yPos2 = self.frame.size.height - self.position.y + (arc4random_uniform(5) + 10) * 10;
+        
+        SKNode *nmy2 = [self nodeWithType:@"e" xPos:xPos2 yPos:yPos2];
+        
+        //action toevoegen aan enemy node
+        action = [self actionForXPos:nmy2.position.x yPos:nmy2.position.y];
+        [nmy2 runAction:[SKAction repeatActionForever:action]];
+        
+        [self addChild:nmy2];
+        
+    }else if(self.luck >= 13){
+        //good luck: enemie aan stage toevoegen
+        //y pos instellen van 2e element die mogelijk aan stage moet worden toegevoegd
+        int yPos2 = self.frame.size.height - self.position.y + (arc4random_uniform(10) + 5) * 10;
+        
+        //item aanmaken en toevoegen aan stage
+        [self createItemX:xPos2 Y:yPos2];
+    }*/
 }
 
 // -------------------------------------

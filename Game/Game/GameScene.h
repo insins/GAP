@@ -7,6 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreAudio/CoreAudioTypes.h>
+
 #import "Pause.h"
 #import "Player.h"
 #import "Background.h"
@@ -22,6 +25,12 @@
 @property (nonatomic, strong) SKNode *background;
 @property (nonatomic, strong) SKNode *world;
 
+@property (nonatomic) AVAudioRecorder *recorder;
+@property (nonatomic) NSTimer *timer;
+@property (nonatomic) double lowPassResults;
+
+@property (nonatomic) BOOL blowBells;
+
 @property (nonatomic) int countUp;
 @property (nonatomic) int yPos;
 @property (nonatomic) int interval;
@@ -29,15 +38,11 @@
 
 @property (nonatomic) int collected;
 @property (nonatomic) int score;
-@property (nonatomic) int lives;
 @property (nonatomic) int level;
 
 @property (nonatomic, strong) CMMotionManager *motionManager;
 
 @property (nonatomic) float frequency;
-
-- (int)lives;
-- (void)setLives:(int)lives;
 
 - (int)level;
 - (void)setLevel:(int)level;

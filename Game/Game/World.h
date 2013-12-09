@@ -15,7 +15,6 @@
 
 @property (nonatomic) CGRect frame;
 @property (nonatomic) int luck;
-@property (nonatomic) int counter;
 @property (nonatomic) int level;
 
 -(void)updateObjects;

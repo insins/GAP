@@ -11,6 +11,7 @@
 @interface Enemy : SKNode
 
 @property (nonatomic) int level;
+@property (nonatomic) float power;
 
 -(id)initWithLevel:(int)level;
 -(void)createEnemy;
