@@ -13,5 +13,6 @@
 @property (nonatomic) int level;
 
 -(id)initWithLevel:(int)level;
+-(void)createEnemy;
 
 @end

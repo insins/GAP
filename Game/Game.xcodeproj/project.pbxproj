@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E85C10D8185496BF001A0883 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85C10D7185496BF001A0883 /* AVFoundation.framework */; };
 		E85C10DA185496EC001A0883 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85C10D9185496EC001A0883 /* CoreAudio.framework */; };
-		EA3F10A0184F3F13007CD424 /* enemies in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109C184F3F13007CD424 /* enemies */; };
+		E88D1229185604CF005FD9A7 /* Enemies in Resources */ = {isa = PBXBuildFile; fileRef = E88D1228185604CF005FD9A7 /* Enemies */; };
 		EA3F10A1184F3F13007CD424 /* items in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109D184F3F13007CD424 /* items */; };
 		EA3F10A2184F3F13007CD424 /* player in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109E184F3F13007CD424 /* player */; };
 		EA3F10A3184F3F13007CD424 /* powerups in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109F184F3F13007CD424 /* powerups */; };
@@ -51,7 +51,7 @@
 /* Begin PBXFileReference section */
 		E85C10D7185496BF001A0883 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E85C10D9185496EC001A0883 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		EA3F109C184F3F13007CD424 /* enemies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = enemies; sourceTree = "<group>"; };
+		E88D1228185604CF005FD9A7 /* Enemies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Enemies; sourceTree = "<group>"; };
 		EA3F109D184F3F13007CD424 /* items */ = {isa = PBXFileReference; lastKnownFileType = folder; path = items; sourceTree = "<group>"; };
 		EA3F109E184F3F13007CD424 /* player */ = {isa = PBXFileReference; lastKnownFileType = folder; path = player; sourceTree = "<group>"; };
 		EA3F109F184F3F13007CD424 /* powerups */ = {isa = PBXFileReference; lastKnownFileType = folder; path = powerups; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 		EA66957618448E9B00AF6A87 /* GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA66957718448E9B00AF6A87 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		EA6695901844A08A00AF6A87 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		EA6695911844A08A00AF6A87 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		EA6695911844A08A00AF6A87 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 5; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		EA6695931844A13900AF6A87 /* AchievementsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsScene.h; sourceTree = "<group>"; };
 		EA6695941844A13900AF6A87 /* AchievementsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsScene.m; sourceTree = "<group>"; };
 		EA6695971844A69100AF6A87 /* Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pause.h; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 		EA3F1084184F2085007CD424 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				EA3F109C184F3F13007CD424 /* enemies */,
+				E88D1228185604CF005FD9A7 /* Enemies */,
 				EA3F109D184F3F13007CD424 /* items */,
 				EA3F109E184F3F13007CD424 /* player */,
 				EA3F109F184F3F13007CD424 /* powerups */,
@@ -396,9 +396,9 @@
 			files = (
 				EA3F10A1184F3F13007CD424 /* items in Resources */,
 				EA66955E18448E9B00AF6A87 /* InfoPlist.strings in Resources */,
-				EA3F10A0184F3F13007CD424 /* enemies in Resources */,
 				EA3F10A2184F3F13007CD424 /* player in Resources */,
 				EA66957118448E9B00AF6A87 /* Images.xcassets in Resources */,
+				E88D1229185604CF005FD9A7 /* Enemies in Resources */,
 				EA3F10A3184F3F13007CD424 /* powerups in Resources */,
 				EA66956718448E9B00AF6A87 /* Main.storyboard in Resources */,
 			);
