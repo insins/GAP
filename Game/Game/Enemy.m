@@ -19,6 +19,7 @@
         //per level zijn een 2tal verschillende enemies.
         
         //+physicsbody instellen
+        self.power = .3;
         
         NSString *path = [[NSBundle mainBundle] pathForResource:@"jelly" ofType:@"png" inDirectory:@"powerups"];
         

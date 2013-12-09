@@ -7,23 +7,16 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <CoreAudio/CoreAudioTypes.h>
 
 @interface Player : SKNode
 
 
-@property (nonatomic) BOOL canPlayerBlow;
-
-@property (nonatomic) AVAudioRecorder *recorder;
-@property (nonatomic) NSTimer *timer;
-@property (nonatomic) double lowPassResults;
-
 @property (nonatomic, strong) SKSpriteNode *bell;
 @property (nonatomic, strong) SKSpriteNode *fish;
 
--(void)scaleBell:(int)lives;
+@property (nonatomic) float size;
+
+-(void)scaleBell:(float)size;
 -(void)addPower:(NSString*)type;
--(void)stopRecording;
 
 @end

@@ -15,7 +15,6 @@
 @synthesize player = _player;
 @synthesize background = _background;
 @synthesize world = _world;
-@synthesize lives = _lives;
 @synthesize level = _level;
 @synthesize interval = _interval;
 
@@ -24,7 +23,6 @@
         /* Setup your scene here */
         
         self.world = [[World alloc] initWithFrame:self.frame];
-        self.lives = 3;
         self.level = 1;
         
         self.backgroundColor = [SKColor whiteColor];
@@ -57,12 +55,10 @@
         [self addChild:self.player];
         [self addChild:self.world];
         
-        //op yes zetten om te testen (zou eigenlijk op andere plaats moeten staan)
-        Player *pl = (Player*)self.player;
-        pl.canPlayerBlow = YES;
+        [self initMicrofoon];
         
-        //luister naar event die wordt uitgestuurd als speler blaast en hij kan blazen
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addLive:) name:@"blow" object:nil];
+        //player stuurt notification als bel te klein is =(gameover)
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameOver:) name:@"gameover" object:nil];
         
     }
     return self;
@@ -72,7 +68,9 @@
 // Toon de gameover scene
 // --------------------------------------
 
--(void)gameOver{
+-(void)gameOver:(id)sender{
+    
+    [self stopRecording];
     
     SKTransition *reveal = [SKTransition pushWithDirection:SKTransitionDirectionDown duration:0.5];
     SKScene *gfScene = [[GameFinishedScene alloc] initWithSize:self.frame.size collected:self.collected score:self.score];
@@ -116,40 +114,24 @@
     if (!(self.yPos % self.interval)){
         
         self.yPos = 1;
-        self.interval = round((3200 - self.difficulty) / 8);
+        self.interval = round((1600 - self.difficulty) / 8);
+        
         [(World*)self.world updateObjects];
         
-        //difficulty verhogen (snelheid verhogen)
-        int new = self.difficulty + 60;
-        if(new < 1500){
-            self.difficulty = new;
-        }else if(self.level < 3){
-            
-            //op hoogste difficulty tel je eerst af voordat je naar volgend level gaat
+        if(self.level < 3){
+            //counter bepaalt wanneer je naar volgend level gaat
             self.countUp ++;
-            if (self.countUp == 16 * self.level) {
+            
+            if (self.countUp == 16) {
                 //naar volgend level gaan. alle waarden terugzetten
                 self.level++;
-                self.difficulty = (self.level - 1) * 128;
+                self.difficulty = (self.level - 1) * 200;
                 self.countUp = 0;
-                
-                //hier zou je bijvoorbeeld kunnen blazen
-                Player *pl = (Player*)self.player;
-                pl.canPlayerBlow = YES;
                 
             }
         }
         
     }
-}
-
-// --------------------------------------
-// Deze functie wordt uitgevoerd als speler
-// blaast en er leven mag verhoogd worden
-// --------------------------------------
-
--(void) addLive:(id)sender{
-    self.lives++;
 }
 
 // -------------------------------------
@@ -184,8 +166,15 @@
         
         SKSpriteNode *monster = (SKSpriteNode *)first.node;
         [monster removeFromParent];
-
-        self.lives--;
+        
+        Enemy *en = (Enemy*)monster;
+        Player *pl = (Player*)self.player;
+        
+        NSLog(@"%f", en.power);
+        
+        [pl scaleBell:pl.size - en.power];
+        
+        //self.lives--;
         
     }else if((first.categoryBitMask & playerCategory) != 0 && (second.categoryBitMask & itemCategory) != 0){
         //player(first) hits item(second)
@@ -213,36 +202,72 @@
 }
 
 // -------------------------------------
+// Microfoon initializen
+// -------------------------------------
+
+//roep deze functie op vanuit GameScene op het moment dat speler mag blazen
+
+-(void)initMicrofoon{
+    
+    // Hiermee zet je alles goed voor audio input
+    // Daarna ga je naar de functie die kijkt of er effectief geblazen wordt.
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setActive:YES error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord error:nil];
+    
+    NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
+    
+    NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat: 44100.0], AVSampleRateKey, [NSNumber numberWithInt: kAudioFormatAppleLossless], AVFormatIDKey, [NSNumber numberWithInt: 1], AVNumberOfChannelsKey, [NSNumber numberWithInt: AVAudioQualityMax], AVEncoderAudioQualityKey, nil];
+    
+    NSError *error;
+    
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
+    
+    if ([self.recorder prepareToRecord]) {
+        self.recorder.meteringEnabled = YES;
+        
+        if ([self.recorder record]) {
+            NSLog(@"record");
+            self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
+        }
+        
+    } else {
+        NSLog(@"%@", [error description]);
+    }
+    
+}
+
+-(void)stopRecording{
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+// -------------------------------------
+// Functie voor bij het blazen
+// -------------------------------------
+
+- (void)levelTimerCallback:(NSTimer *)timer {
+	[self.recorder updateMeters];
+    
+	const double ALPHA = 0.05;
+	double peakPowerForChannel = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
+	self.lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * self.lowPassResults;
+    
+    // Er wordt geblazen
+	if (self.lowPassResults > 0.70){
+        //er wordt geblazen
+        if (self.blowBells) {
+            //maak een nieuwe bel
+        }
+    }
+}
+
+// -------------------------------------
 // Levens logica
 // -------------------------------------
 
-// Je begint met 3 levens ( je kan dan 4 keer in totaal geraakt worden)
-//zolang lives > 0, is het geen game over
+// Niet meer met leventjes, maar met grootte van bel
 
-- (int)lives{
-    return _lives;
-}
-
-- (void)setLives:(int)lives{
-    
-    Player *pl = (Player*)self.player;
-    
-    if (lives < 4) {
-        _lives = lives;
-        
-        //re-scale bell adhv aantal leventjes
-        [pl scaleBell:lives];
-        
-        if(lives < 1){
-            [pl stopRecording];
-            [self gameOver];
-        }
-        
-    }else if(lives >= 3){
-        // je kan niet meer blazen want je hebt max aantal levens
-        pl.canPlayerBlow = NO;
-    }
-}
 
 // -------------------------------------
 // Levels
