@@ -161,13 +161,13 @@
         second = contact.bodyA;
     }
     
-    if ((first.categoryBitMask & monsterCategory) != 0 && (second.categoryBitMask & playerCategory) != 0) {
+    if ((first.categoryBitMask & dangerousCategory) != 0 && (second.categoryBitMask & playerCategory) != 0) {
         //player(first) hits monster(second)
         
-        SKSpriteNode *monster = (SKSpriteNode *)first.node;
-        [monster removeFromParent];
+        SKSpriteNode *enemy = (SKSpriteNode *)first.node;
+        [enemy removeFromParent];
         
-        Enemy *en = (Enemy*)monster;
+        Enemy *en = (Enemy*)enemy;
         Player *pl = (Player*)self.player;
         
         [pl scaleBell:pl.size - en.power];

@@ -16,8 +16,7 @@
 
     #define FONT @"GillSans-BoldItalic"
 
-    static const uint32_t projectileCategory =  0x1 << 0;
-    static const uint32_t monsterCategory =     0x1 << 1;
-    static const uint32_t playerCategory =      0x1 << 2;
-    static const uint32_t itemCategory =        0x1 << 3;
+    static const uint32_t dangerousCategory =   0x1 << 0;
+    static const uint32_t playerCategory =      0x1 << 1;
+    static const uint32_t itemCategory =        0x1 << 2;
 #endif

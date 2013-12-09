@@ -48,7 +48,8 @@
         //good luck: item aan stage toevoegen
         
         //item aanmaken en toevoegen aan stage
-        [self createItemX:xPos Y:yPos];
+        SKNode *pwr = [self nodeWithType:@"p" xPos:xPos yPos:yPos];
+        [self addChild:pwr];
         
     }else if(self.luck >= 9){
         //bad luck: enemie aan stage toevoegen
@@ -94,7 +95,6 @@
 //3 tyes:
 //# enemie (e)
 //# powerup (p)
-//# collectoritem (c)
 
 -(SKNode*) nodeWithType:(NSString*)type xPos:(int)xPos yPos:(int)yPos{
     
@@ -111,27 +111,6 @@
     obj.position = CGPointMake(xPos, yPos);
     
     return obj;
-}
-
-// -------------------------------------
-// Item aanmaken en aan world toevoegen
-// -------------------------------------
-
--(void) createItemX:(int)xPos Y:(int)yPos{
-    //random getal die bepaald of er een collect item/power wordt toegevoegd aan stage
-    int pwrItm = round(arc4random_uniform(20)) + 1;
-    
-    if(pwrItm == 1){
-        //add powerup
-        
-        SKNode *pwr = [self nodeWithType:@"p" xPos:xPos yPos:yPos];
-        [self addChild:pwr];
-    }else{
-        //add item
-        
-        SKNode *itm = [self nodeWithType:@"c" xPos:xPos yPos:yPos];
-        [self addChild:itm];
-    }
 }
 
 // -------------------------------------
