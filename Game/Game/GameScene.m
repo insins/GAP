@@ -57,6 +57,7 @@
         [self addChild:self.player];
         [self addChild:self.world];
         
+        //op yes zetten om te testen (zou eigenlijk op andere plaats moeten staan)
         Player *pl = (Player*)self.player;
         pl.canPlayerBlow = YES;
         
@@ -227,19 +228,18 @@
     Player *pl = (Player*)self.player;
     
     if (lives < 4) {
-        
         _lives = lives;
-        //re-scale bell adhv aantal leventjes
         
+        //re-scale bell adhv aantal leventjes
         [pl scaleBell:lives];
         
-        NSLog(@"%i", lives);
-        
         if(lives < 1){
+            [pl stopRecording];
             [self gameOver];
         }
         
     }else if(lives >= 3){
+        // je kan niet meer blazen want je hebt max aantal levens
         pl.canPlayerBlow = NO;
     }
 }

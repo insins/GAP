@@ -24,5 +24,6 @@
 
 -(void)scaleBell:(int)lives;
 -(void)addPower:(NSString*)type;
+-(void)stopRecording;
 
 @end

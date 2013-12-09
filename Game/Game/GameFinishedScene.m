@@ -14,6 +14,8 @@
     
     if (self = [super initWithSize:size]) {
     
+        NSLog(@"game over");
+        
         self.backgroundColor = [SKColor redColor];
         
         SKAction * waitAction = [SKAction waitForDuration:3.0];

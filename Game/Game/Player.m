@@ -49,25 +49,35 @@
         
         // Hiermee zet je alles goed voor audio input
         // Daarna ga je naar de functie die kijkt of er effectief geblazen wordt.
-        NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setActive:YES error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord error:nil];
+    
+    NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];;
+    
+    NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat: 44100.0], AVSampleRateKey, [NSNumber numberWithInt: kAudioFormatAppleLossless], AVFormatIDKey, [NSNumber numberWithInt: 1], AVNumberOfChannelsKey, [NSNumber numberWithInt: AVAudioQualityMax], AVEncoderAudioQualityKey, nil];
         
-        NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat: 44100.0], AVSampleRateKey, [NSNumber numberWithInt: kAudioFormatAppleLossless], AVFormatIDKey, [NSNumber numberWithInt: 1], AVNumberOfChannelsKey, [NSNumber numberWithInt: AVAudioQualityMax], AVEncoderAudioQualityKey, nil];
+    NSError *error;
         
-        NSError *error;
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
         
-        self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
-        
-        if (self.recorder) {
-            [self.recorder prepareToRecord];
-            self.recorder.meteringEnabled = YES;
-            [self.recorder record];
+    if ([self.recorder prepareToRecord]) {
+        self.recorder.meteringEnabled = YES;
             
+        if ([self.recorder record]) {
+            NSLog(@"record");
             self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
-            
-        } else {
-            NSLog(@"%@", [error description]);
         }
+            
+    } else {
+        NSLog(@"%@", [error description]);
+    }
 
+}
+
+-(void)stopRecording{
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 // -------------------------------------
@@ -80,16 +90,11 @@
 	const double ALPHA = 0.05;
 	double peakPowerForChannel = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
 	self.lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * self.lowPassResults;
-	
-    //NSLog(@"%f", peakPowerForChannel);
     
-    // Er wordt niet geblazen
-	if (!(0.70 < self.lowPassResults < 0.95)){
-        
+    // Er wordt geblazen
+	if (self.lowPassResults > 0.70){
         //event uitsturen om leven te verhogen
         if (self.canPlayerBlow){
-            NSLog(@"Blowing");
-
             [[NSNotificationCenter defaultCenter] postNotificationName:@"blow" object:self];
         }
     }
