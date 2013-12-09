@@ -46,7 +46,7 @@
     
     //bell scalen adhv aantal lives
     self.size = size;
-    SKAction *scale = [SKAction scaleTo:.18 + self.size * .32 duration:.3];
+    SKAction *scale = [SKAction scaleTo:.22 + self.size * .28 duration:.3];
     
     [self.bell runAction:scale completion:^(){
         [self resetPhysicsBody];

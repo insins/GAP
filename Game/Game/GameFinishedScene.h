@@ -11,6 +11,6 @@
 
 @interface GameFinishedScene : SKScene
 
--(id)initWithSize:(CGSize)size collected:(int)collected score:(int)score;
+-(id)initWithSize:(CGSize)size score:(int)score;
 
 @end

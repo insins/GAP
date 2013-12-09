@@ -23,7 +23,7 @@
         /* Setup your scene here */
         
         self.world = [[World alloc] initWithFrame:self.frame];
-        self.level = 3;
+        self.level = 1;
         
         self.backgroundColor = [SKColor whiteColor];
         
@@ -73,7 +73,7 @@
     [self stopRecording];
     
     SKTransition *reveal = [SKTransition pushWithDirection:SKTransitionDirectionDown duration:0.5];
-    SKScene *gfScene = [[GameFinishedScene alloc] initWithSize:self.frame.size collected:self.collected score:self.score];
+    SKScene *gfScene = [[GameFinishedScene alloc] initWithSize:self.frame.size score:self.score];
     [self.view presentScene:gfScene transition:reveal];
 }
 
@@ -173,20 +173,13 @@
         [pl scaleBell:pl.size - en.power];
         
     }else if((first.categoryBitMask & playerCategory) != 0 && (second.categoryBitMask & itemCategory) != 0){
-        //player(first) hits item(second)
-        
-        SKSpriteNode *item = (SKSpriteNode *)second.node;
-        [item removeFromParent];
-        
-        self.collected++;
-        
-    }else if((first.categoryBitMask & playerCategory) != 0 && (second.categoryBitMask & powerupCategory) != 0){
         //player(first) hits power(second)
         Player *pl = (Player *)first.node;
         Item *pwr = (Item *)second.node;
         [pwr removeFromParent];
         
         [pl addPower:pwr.power];
+         self.score++;
     }
 }
 

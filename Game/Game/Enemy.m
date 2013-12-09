@@ -26,20 +26,7 @@
         //per level zijn een 2tal verschillende enemies.
         
         //+physicsbody instellen
-        self.power = .3;
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"png" inDirectory:@"Enemies"];
-        
-        SKSpriteNode *test = [SKSpriteNode spriteNodeWithImageNamed:path];
-        
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:test.size.width/2];
-        self.physicsBody.dynamic = YES;
-        self.physicsBody.affectedByGravity = NO;
-        self.physicsBody.categoryBitMask = monsterCategory;
-        self.physicsBody.contactTestBitMask = playerCategory;
-        self.physicsBody.collisionBitMask = 0;
-        
-        [self addChild:test];
+        self.power = .1;
         
     }
     
@@ -51,8 +38,6 @@
 // En in de andere functie zal hij dan aan de hand van het random nummer de enemy spawnen
 
 -(void)createEnemy{
-    
-    NSLog(@"ik maak een enemy");
     
     // We maken een array aan waar we de vijanden gaan insteken
     // Array maken waar alle vijanden inzitten
@@ -78,8 +63,7 @@
         case 1 :
             
             // Vijanden toevoegen in de array
-            [enemies addObject:haai];
-            [enemies addObject:skeletvis];
+            enemies = [[NSMutableArray alloc] initWithObjects:haai, skeletvis, nil];
             
             [self generateEnemies:enemies];
             
@@ -87,19 +71,14 @@
             
         case 2:
             
-            [enemies addObject:vliegtuig];
-            [enemies addObject:zeemeeuw];
-
+            enemies = [[NSMutableArray alloc] initWithObjects:vliegtuig, zeemeeuw, nil];
             
             [self generateEnemies:enemies];
             break;
             
         case 3:
             
-            [enemies addObject:satteliet];
-            [enemies addObject:meteoriet];
-            [enemies addObject:ufo];
-
+            enemies = [[NSMutableArray alloc] initWithObjects:satteliet, meteoriet, ufo, nil];
             
             [self generateEnemies:enemies];
             break;
@@ -107,7 +86,7 @@
     }
 }
 
-// Hier worden de Enemies voor level 1 gemaakt
+// Hier worden de Enemies gemaakt
 -(void)generateEnemies:(NSMutableArray *)enemies{
     
     // Genereren we een random nummer
@@ -116,13 +95,23 @@
     int range = maxNummer - minNummer;
     int randomNummer = arc4random_uniform(range) + minNummer;
     
-    // Eerst eens loggen welke vijand
-    NSLog(@"Het random nummer is  = %i", randomNummer);
-    
     // En dan gaan we kijken welk item staat op de random nummer in de array
     NSString * vijand = [enemies objectAtIndex:randomNummer];
     
     NSLog(@"vijand %@", vijand);
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"png" inDirectory:@"Enemies"];
+    
+    SKSpriteNode *test = [SKSpriteNode spriteNodeWithImageNamed:path];
+    
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:test.size.width/2];
+    self.physicsBody.dynamic = YES;
+    self.physicsBody.affectedByGravity = NO;
+    self.physicsBody.categoryBitMask = monsterCategory;
+    self.physicsBody.contactTestBitMask = playerCategory;
+    self.physicsBody.collisionBitMask = 0;
+    
+    [self addChild:test];
 }
 
 @end

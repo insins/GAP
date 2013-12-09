@@ -11,8 +11,5 @@
 @interface Item : SKNode
 
 @property (nonatomic) NSString *power;
-@property (nonatomic) int level;
-
--(id)initWithType:(NSString*)type level:(int)level;
 
 @end

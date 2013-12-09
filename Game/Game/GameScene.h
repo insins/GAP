@@ -36,7 +36,6 @@
 @property (nonatomic) int interval;
 @property (nonatomic) int difficulty;
 
-@property (nonatomic) int collected;
 @property (nonatomic) int score;
 @property (nonatomic) int level;
 

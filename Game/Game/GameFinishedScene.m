@@ -10,7 +10,7 @@
 
 @implementation GameFinishedScene
 
--(id)initWithSize:(CGSize)size collected:(int)collected score:(int)score{
+-(id)initWithSize:(CGSize)size score:(int)score{
     
     if (self = [super initWithSize:size]) {
     
