@@ -81,7 +81,7 @@
             [enemies addObject:haai];
             [enemies addObject:skeletvis];
             
-            [self generateEnemiesLevelEen:enemies];
+            [self generateEnemies:enemies];
             
             break;
             
@@ -91,7 +91,7 @@
             [enemies addObject:zeemeeuw];
 
             
-            [self generateEnemiesLevelTwee:enemies];
+            [self generateEnemies:enemies];
             break;
             
         case 3:
@@ -101,55 +101,14 @@
             [enemies addObject:ufo];
 
             
-            [self generateEnemiesLevelTwee:enemies];
+            [self generateEnemies:enemies];
             break;
     
     }
 }
 
 // Hier worden de Enemies voor level 1 gemaakt
--(void)generateEnemiesLevelEen:(NSMutableArray *)enemies{
-    
-    // Genereren we een random nummer
-    int minNummer = 0;
-    int maxNummer = [enemies count];
-    int range = maxNummer - minNummer;
-    int randomNummer = arc4random_uniform(range) + minNummer;
-    
-    // Eerst eens loggen welke vijand
-    NSLog(@"Het random nummer is  = %i", randomNummer);
-    
-    // En dan gaan we kijken welk item staat op de random nummer in de array
-    NSString * vijand = [enemies objectAtIndex:randomNummer];
-    
-    NSLog(@"vijand %@", vijand);
-    
-    
-    
-    
-}
-
-// Generaten Enemies level 2
--(void)generateEnemiesLevelTwee:(NSMutableArray *)enemies{
-    
-    // Genereren we een random nummer
-    int minNummer = 0;
-    int maxNummer = [enemies count];
-    int range = maxNummer - minNummer;
-    int randomNummer = arc4random_uniform(range) + minNummer;
-    
-    // Eerst eens loggen welke vijand
-    NSLog(@"Het random nummer is  = %i", randomNummer);
-    
-    // En dan gaan we kijken welk item staat op de random nummer in de array
-    NSString * vijand = [enemies objectAtIndex:randomNummer];
-    
-    NSLog(@"vijand %@", vijand);
-
-}
-
-// Generate enemies level 3
--(void)generateEnemiesLevelDrie:(NSMutableArray *)enemies{
+-(void)generateEnemies:(NSMutableArray *)enemies{
     
     // Genereren we een random nummer
     int minNummer = 0;
