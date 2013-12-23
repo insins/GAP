@@ -9,7 +9,8 @@
 #import <SpriteKit/SpriteKit.h>
 
 #import "Enemy.h"
-#import "Item.h"
+#import "Power.h"
+#import "Bell.h"
 
 @interface World : SKNode
 
@@ -18,6 +19,7 @@
 @property (nonatomic) int level;
 
 -(void)updateObjects;
+-(void)updateBubbles;
 -(id)initWithFrame:(CGRect)frame;
 
 - (int)level;
