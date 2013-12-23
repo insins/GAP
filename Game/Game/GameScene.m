@@ -105,9 +105,6 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
      if (!self.blowBells) {
-     
-          //in level 3 komen geen enemies meer
-          NSLog(@"update enal");
           
           CMDeviceMotion *currMotion = self.motionManager.deviceMotion;
     
@@ -142,29 +139,27 @@
                self.yPos = 1;
                self.interval = round((1600 - self.difficulty) / 8);
           
-               if(self.level < 3){
-                    //counter bepaalt wanneer je naar volgend level gaat
-                    self.countUp ++;
+               //counter bepaalt wanneer je naar volgend level gaat
+               self.countUp ++;
                
-                    Player* pl = (Player*)self.player;
-                    [pl scaleBell:pl.size-.1];
+               Player* pl = (Player*)self.player;
+               [pl scaleBell:pl.size-.1];
+               
+               if (self.countUp == max && self.level < 3){
+                    //naar volgend level gaan. alle waarden terugzetten
+                    self.level++;
+                    self.difficulty = self.level * 100;
+                    self.countUp = 0;
+                    self.blowBells = YES;
                     
-                    if (self.countUp == max){
-                         //naar volgend level gaan. alle waarden terugzetten
-                         self.level++;
-                         self.difficulty = self.level * 100;
-                         self.countUp = 0;
-                         self.blowBells = YES;
-                         
-                         [self resetBellAndPlayer];
-                         
-                         NSLog(@"pause");
-                    }else if(self.countUp != max - 1){
-                         if (!(self.countUp % 4)) {
-                              [(World*)self.world updateBubbles];
-                         }else{
-                              [(World*)self.world updateObjects];
-                         }
+                    [self resetBellAndPlayer];
+                    
+                    NSLog(@"pause");
+               }else if(self.countUp != max - 1){
+                    if (!(self.countUp % 4)) {
+                         [(World*)self.world updateBubbles];
+                    }else{
+                         [(World*)self.world updateObjects];
                     }
                }
           }
