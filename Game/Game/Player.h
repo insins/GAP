@@ -14,9 +14,15 @@
 @property (nonatomic, strong) SKSpriteNode *bell;
 @property (nonatomic, strong) SKSpriteNode *fish;
 
+@property (nonatomic) NSTimer *timer;
+
 @property (nonatomic) float size;
+@property (nonatomic) int level;
 
 -(void)scaleBell:(float)size;
 -(void)addPower:(NSString*)type;
+
+- (int)level;
+- (void)setLevel:(int)level;
 
 @end

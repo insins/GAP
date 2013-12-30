@@ -29,9 +29,10 @@
         
         self.frequency = 60;
         
-        self.interval = 1;
-        self.difficulty = self.level * 150;
+        self.interval = 200;
+        self.difficulty = self.level * 100;
         self.countUp = 0;
+         self.blowBells = YES;
         
         // --------------------------------------
         // motionmanager instellen
@@ -46,14 +47,15 @@
         
         [self initPhysics];
         
+         self.player = [[Player alloc] init];
+         self.player.position = CGPointMake(self.frame.size.width/2,100);
+         
         self.background = [[Background alloc] init];
         
-        self.player = [[Player alloc] init];
-        self.player.position = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
-        
-        [self addChild:self.background];
-        [self addChild:self.player];
-        [self addChild:self.world];
+         [self addChild:self.background];
+         [self addChild:self.world];
+         
+         [self resetBellAndPlayer];
         
         [self initMicrofoon];
         
@@ -62,6 +64,21 @@
         
     }
     return self;
+}
+
+-(void)resetBellAndPlayer{
+     [self.player removeFromParent];
+     Player * pl = (Player*)self.player;
+     
+     [pl scaleBell:-1];
+     
+     NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"lv%ibell",self.level] ofType:@"png" inDirectory:@"player"];
+     
+     self.nBell = [SKSpriteNode spriteNodeWithImageNamed:path];
+     self.nBell.position = CGPointMake(self.size.width/2, -30);
+     [self.nBell setScale:.22];
+     [self addChild:self.nBell];
+     [self addChild:self.player];
 }
 
 // --------------------------------------
@@ -87,51 +104,93 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    CMDeviceMotion *currMotion = self.motionManager.deviceMotion;
+     if (!self.blowBells) {
+          
+          CMDeviceMotion *currMotion = self.motionManager.deviceMotion;
     
-    CMAttitude *currAttitude = currMotion.attitude;
-    //roll mag niet hoger dan .5 en lager dan -.5
-    //pitch mag niet hover dan 1 en lager dan 0
+          CMAttitude *currAttitude = currMotion.attitude;
+          //roll mag niet hoger dan .5 en lager dan -.5
+          //pitch mag niet hover dan 1 en lager dan 0
     
-    float roll = (currAttitude.roll > .5) ? .5 : ((currAttitude.roll < -.5) ? -.5 : currAttitude.roll);
-    float pitch = (currAttitude.pitch > 1) ? 1 : ((currAttitude.pitch < 0) ? 0 : currAttitude.pitch);
+          float roll = (currAttitude.roll > .5) ? .5 : ((currAttitude.roll < -.5) ? -.5 : currAttitude.roll);
+          float pitch = (currAttitude.pitch > 1) ? 1 : ((currAttitude.pitch < 0) ? 0 : currAttitude.pitch);
     
-    //setup nieuwe x en y positie van de player adhv roll & pitch
-    float newY = self.frame.size.height / 2 - (self.frame.size.height / 2.5) * ((pitch - .75) / 2);
-    float newX = self.frame.size.width / 2 + (self.frame.size.width / 3) * 2 * roll;
+          //setup nieuwe x en y positie van de player adhv roll & pitch
+          float newY = self.frame.size.height / 2 - (self.frame.size.height / 2.5) * ((pitch - .75) / 2);
+          float newX = self.frame.size.width / 2 + (self.frame.size.width / 3) * 2 * roll;
     
-    //vermijden dat bel in 1 keer van de ene kan van het scherm naar de andere kant verspringt
-    if (fabsf(self.player.position.x - newX) < self.frame.size.width / 2) self.player.position = CGPointMake(newX, newY);
+          SKAction * movePlayer = [SKAction moveTo:CGPointMake(newX, newY) duration:.3];
+          
+          //vermijden dat bel in 1 keer van de ene kan van het scherm naar de andere kant verspringt
+          if (fabsf(self.player.position.x - newX) < self.frame.size.width / 2) [self.player runAction:movePlayer];
     
-    //bel een beetje roteren als je device rollt
-    self.player.zRotation = roll / 2;
+          //bel een beetje roteren als je device rollt
+          self.player.zRotation = roll / 2;
     
-    //Move bg en world
-    self.world.position = CGPointMake(self.world.position.x, self.world.position.y - 1);
-    self.yPos++;
+          //Move bg en world
+          self.world.position = CGPointMake(self.world.position.x, self.world.position.y - 1);
+          self.yPos++;
     
-    //om de zoveel tijd een nieuwe enemie/item toevoegen aan world
-    if (!(self.yPos % self.interval)){
-        
-        self.yPos = 1;
-        self.interval = round((1600 - self.difficulty) / 8);
-        
-        [(World*)self.world updateObjects];
-        
-        if(self.level < 3){
-            //counter bepaalt wanneer je naar volgend level gaat
-            self.countUp ++;
-            
-            if (self.countUp == 16) {
-                //naar volgend level gaan. alle waarden terugzetten
-                self.level++;
-                self.difficulty = self.level * 150;
-                self.countUp = 0;
-                
-            }
-        }
-        
-    }
+          //om de zoveel tijd een nieuwe enemie/item toevoegen aan world
+     
+          int max = 8;
+          
+          if (!(self.yPos % self.interval)){
+               self.yPos = 1;
+               self.interval = round((1600 - self.difficulty) / 8);
+          
+               //counter bepaalt wanneer je naar volgend level gaat
+               self.countUp ++;
+               
+               Player* pl = (Player*)self.player;
+               [pl scaleBell:pl.size-.1];
+               
+               if (self.countUp == max && self.level < 3){
+                    //naar volgend level gaan. alle waarden terugzetten
+                    self.level++;
+                    self.difficulty = self.level * 100;
+                    self.countUp = 0;
+                    self.blowBells = YES;
+                    
+                    [self resetBellAndPlayer];
+                    
+                    NSLog(@"pause");
+               }else if(self.countUp != max - 1){
+                    if (!(self.countUp % 4)) {
+                         [(World*)self.world updateBubbles];
+                    }else{
+                         [(World*)self.world updateObjects];
+                    }
+               }
+          }
+     }else{
+          
+          Player *p = (Player*) self.player;
+          World *w = (World*) self.world;
+          
+          self.blowBells = YES;
+          
+          SKAction *movePlayer = [SKAction moveTo:CGPointMake(self.frame.size.width / 2, 200) duration:.2];
+          
+          [p runAction:movePlayer];
+          
+          SKAction * moveWorld = [SKAction moveTo:CGPointMake(self.world.position.x, self.world.position.y - self.frame.size.height) duration:2];
+          
+          [w runAction:moveWorld];
+          
+          SKAction * moveNewBell = [SKAction moveTo:CGPointMake(self.frame.size.width / 2, 200) duration:.2];
+          SKAction * wait = [SKAction waitForDuration:1];
+          
+          [self.nBell runAction:[SKAction sequence:@[moveNewBell,wait]] completion:^(){
+          
+               p.level = self.level;
+               
+               [p.bell setScale:.22];
+               p.size = 0;
+               [self.nBell removeFromParent];
+          
+          }];
+     }
 }
 
 // -------------------------------------
@@ -164,22 +223,26 @@
     if ((first.categoryBitMask & dangerousCategory) != 0 && (second.categoryBitMask & playerCategory) != 0) {
         //player(first) hits monster(second)
         
-        SKSpriteNode *enemy = (SKSpriteNode *)first.node;
-        [enemy removeFromParent];
-        
-        Enemy *en = (Enemy*)enemy;
+        Enemy *en = (Enemy*)first.node;
         Player *pl = (Player*)self.player;
         
         [pl scaleBell:pl.size - en.power];
         
-    }else if((first.categoryBitMask & playerCategory) != 0 && (second.categoryBitMask & itemCategory) != 0){
+    }else if((first.categoryBitMask & playerCategory) != 0 && (second.categoryBitMask & powerCategory) != 0){
         //player(first) hits power(second)
         Player *pl = (Player *)first.node;
-        Item *pwr = (Item *)second.node;
+        Power *pwr = (Power *)second.node;
         [pwr removeFromParent];
         
         [pl addPower:pwr.power];
          self.score++;
+    }else if((first.categoryBitMask & playerCategory) != 0 && (second.categoryBitMask & itemCategory) != 0){
+         
+         Player *pl = (Player*)self.player;
+         Bell *bl = (Bell*)second.node;
+         
+         [pl scaleBell:pl.size + bl.power];
+         [bl removeFromParent];
     }
 }
 
@@ -247,6 +310,19 @@
         //er wordt geblazen
         if (self.blowBells) {
             //maak een nieuwe bel
+             Player *pl = (Player*)self.player;
+             
+             NSLog(@"%f", pl.size);
+             if (pl.size != -1) {
+                  [pl scaleBell:pl.size + .025];
+             }
+             
+             //bell is opgeblazen, dus het spel mag beginnen
+             
+             if (pl.size >= 1) {
+                  [pl scaleBell:1];
+                  self.blowBells = NO;
+             }
         }
     }
 }
@@ -270,11 +346,11 @@
 }
 
 - (void)setLevel:(int)level{
-    _level = level;
+     _level = level;
     
-    //Setup new bg, enemies & items
-    World *w = (World*) self.world;
-    w.level = level;
+     //Setup new bg, enemies & items
+     World *w = (World*) self.world;
+     w.level = level;
 }
 
 @end

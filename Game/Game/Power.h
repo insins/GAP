@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Item : SKNode
+@interface Power : SKNode
 
 @property (nonatomic) NSString *power;
 

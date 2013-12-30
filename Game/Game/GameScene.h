@@ -22,6 +22,7 @@
 
 @property (nonatomic, strong) SKNode *pause;
 @property (nonatomic, strong) SKNode *player;
+@property (nonatomic, strong) SKNode *nBell;
 @property (nonatomic, strong) SKNode *background;
 @property (nonatomic, strong) SKNode *world;
 

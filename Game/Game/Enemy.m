@@ -90,15 +90,13 @@
 -(void)generateEnemies:(NSMutableArray *)enemies{
     
     // Genereren we een random nummer
-    int minNummer = 0;
-    int maxNummer = [enemies count];
-    int range = maxNummer - minNummer;
-    int randomNummer = arc4random_uniform(range) + minNummer;
+    int range = (int)[enemies count];
+    int randomNummer = arc4random_uniform(range);
     
     // En dan gaan we kijken welk item staat op de random nummer in de array
     NSString * vijand = [enemies objectAtIndex:randomNummer];
     
-    NSLog(@"vijand %@", vijand);
+    //NSLog(@"vijand %@", vijand);
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"png" inDirectory:@"Enemies"];
     
@@ -107,7 +105,7 @@
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:test.size.width/2];
     self.physicsBody.dynamic = YES;
     self.physicsBody.affectedByGravity = NO;
-    self.physicsBody.categoryBitMask = monsterCategory;
+    self.physicsBody.categoryBitMask = dangerousCategory;
     self.physicsBody.contactTestBitMask = playerCategory;
     self.physicsBody.collisionBitMask = 0;
     

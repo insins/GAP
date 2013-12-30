@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Devine. All rights reserved.
 //
 
-#import "Item.h"
+#import "Power.h"
 
-@implementation Item
+@implementation Power
 
 -(id)init{
     if (self = [super init]) {
@@ -18,7 +18,7 @@
         
         obj = [self createPowerup];
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:obj.size.width/2];
-        self.physicsBody.categoryBitMask = itemCategory;
+        self.physicsBody.categoryBitMask = powerCategory;
         
         self.physicsBody.dynamic = YES;
         self.physicsBody.affectedByGravity = NO;
@@ -44,10 +44,8 @@
     
     powerups = [[NSMutableArray alloc] initWithObjects:blow, jelly, turtle, whale, nil];
     
-    int minNummer = 0;
-    int maxNummer = [powerups count];
-    int range = maxNummer - minNummer;
-    int randomNummer = arc4random_uniform(range) + minNummer;
+    int range = (int)[powerups count];
+    int randomNummer = arc4random_uniform(range);
     
     self.power = [powerups objectAtIndex:randomNummer];
     
