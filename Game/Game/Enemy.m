@@ -46,7 +46,6 @@
    // Vijanden aanmaken
     // LEVEL 1
     NSString * haai = @"haai";
-    NSString * skeletvis = @"skeletvis";
     
     // LEVEL 2
     NSString * vliegtuig = @"vliegtuig";
@@ -63,7 +62,7 @@
         case 1 :
             
             // Vijanden toevoegen in de array
-            enemies = [[NSMutableArray alloc] initWithObjects:haai, skeletvis, nil];
+            enemies = [[NSMutableArray alloc] initWithObjects:haai, nil];
             
             [self generateEnemies:enemies];
             
@@ -98,7 +97,7 @@
     
     //NSLog(@"vijand %@", vijand);
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"png" inDirectory:@"Enemies"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:vijand ofType:@"png" inDirectory:@"Enemies"];
     
     SKSpriteNode *test = [SKSpriteNode spriteNodeWithImageNamed:path];
     
