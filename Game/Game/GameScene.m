@@ -125,7 +125,8 @@
           if (fabsf(self.player.position.x - newX) < self.frame.size.width / 2) [self.player runAction:movePlayer];
     
           //bel een beetje roteren als je device rollt
-          self.player.zRotation = roll / 2;
+          SKAction * rotatePlayer = [SKAction rotateToAngle:roll / 2 duration:.3];
+          [self.player runAction:rotatePlayer];
     
           //Move bg en world
           self.world.position = CGPointMake(self.world.position.x, self.world.position.y - 1);
@@ -164,6 +165,8 @@
                }
           }
      }else{
+          
+          //Alle animaties die nodig zijn voordat de bel moet worden geblazen
           
           Player *p = (Player*) self.player;
           World *w = (World*) self.world;
