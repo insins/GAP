@@ -7,13 +7,17 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Projectile.h"
 
 @interface Enemy : SKNode
 
 @property (nonatomic) int level;
 @property (nonatomic) float power;
+@property (nonatomic, strong) NSString * vijand;
+@property (nonatomic, strong) SKSpriteNode *obj;
 
 -(id)initWithLevel:(int)level;
 -(void)createEnemy;
+-(void)addProjectile:(CGRect)frame;
 
 @end

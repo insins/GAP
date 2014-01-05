@@ -17,6 +17,8 @@
 @property (nonatomic) CGRect frame;
 @property (nonatomic) int luck;
 @property (nonatomic) int level;
+@property (nonatomic, strong) SKNode *nmy;
+@property (nonatomic, strong) NSTimer *timer;
 
 -(void)updateObjects;
 -(void)updateBubbles;

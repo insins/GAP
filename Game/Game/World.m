@@ -23,6 +23,7 @@
 -(id)initWithFrame:(CGRect)frame{
     if (self = [super init]) {
         self.frame = frame;
+        self.timer = nil;
     }
     return self;
 }
@@ -57,27 +58,30 @@
         SKNode *pwr = [self nodeWithType:@"p" xPos:xPos2 yPos:yPos2];
         [self addChild:pwr];
         
-    }else if(self.luck == 16){
-        //bad luck: enemie aan stage toevoegen
-        
-        //add enemy
-        
-        SKNode *nmy2 = [self nodeWithType:@"e" xPos:xPos2 yPos:yPos2];
-        
-        //action toevoegen aan enemy node
-        SKAction *action = [self actionForXPos:nmy2.position.x yPos:nmy2.position.y];
-        [nmy2 runAction:[SKAction repeatActionForever:action]];
-        [self addChild:nmy2];
     }
-    
         //add enemy
         
-        SKNode *nmy = [self nodeWithType:@"e" xPos:xPos yPos:yPos];
+        self.nmy = [self nodeWithType:@"e" xPos:xPos yPos:yPos];
         
         //action toevoegen aan enemy node
-        SKAction *action = [self actionForXPos:nmy.position.x yPos:nmy.position.y];
+        /*
+         SKAction *action = [self actionForXPos:nmy.position.x yPos:nmy.position.y];
         [nmy runAction:[SKAction repeatActionForever:action]];
-        [self addChild:nmy];
+         */
+    
+        //animatie moet in de Enemie klasse worden uitgevoerd
+    
+        [self addChild:self.nmy];
+    
+        if (self.timer == nil && self.level == 1) {
+            self.timer = [NSTimer scheduledTimerWithTimeInterval: 3.5 target: self selector: @selector(addProjectile:) userInfo: nil repeats: YES];
+        }
+    
+}
+
+-(void)addProjectile:(NSTimer *)timer{
+    Enemy * nmy = (Enemy*)self.nmy;
+    [nmy addProjectile:self.frame];
 }
 
 -(void)updateBubbles{
@@ -91,20 +95,6 @@
     bubble.position = CGPointMake(xPos, yPos);
     
     [self addChild:bubble];
-}
-
-// -------------------------------------
-// Action creeeren voor enemie
-// -------------------------------------
-
--(SKAction*) actionForXPos:(int)xPos yPos:(int)yPos{
-    //laten bewegen adhv meegegeven x en y pos.
-    
-    SKAction *moveLeft = [SKAction moveTo:CGPointMake(xPos - (arc4random_uniform(self.frame.size.width / 8 - 20) + 10), yPos) duration:arc4random_uniform(2) + 1];
-    SKAction *moveRight = [SKAction moveTo:CGPointMake(xPos + (arc4random_uniform(self.frame.size.width / 8 - 20) + 10), yPos) duration:arc4random_uniform(2) + 1];
-    SKAction *move = [SKAction sequence:@[moveLeft,moveRight]];
-    
-    return move;
 }
 
 // -------------------------------------

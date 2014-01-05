@@ -26,7 +26,6 @@
         //per level zijn een 2tal verschillende enemies.
         
         //+physicsbody instellen
-        self.power = .1;
         
     }
     
@@ -47,12 +46,13 @@
     // LEVEL 1
     NSString * haai = @"haai";
     
+    
     // LEVEL 2
     NSString * vliegtuig = @"vliegtuig";
-    NSString * zeemeeuw = @"zeemeeuw";
+    NSString * meeuw = @"meeuw";
     
     // LEVEL 3
-    NSString * satteliet = @"satteliet";
+    NSString * satteliet = @"satelliet";
     NSString * meteoriet = @"meteoriet";
     NSString * ufo = @"ufo";
     
@@ -70,7 +70,7 @@
             
         case 2:
             
-            enemies = [[NSMutableArray alloc] initWithObjects:vliegtuig, zeemeeuw, nil];
+            enemies = [[NSMutableArray alloc] initWithObjects:vliegtuig, meeuw, nil];
             
             [self generateEnemies:enemies];
             break;
@@ -93,22 +93,60 @@
     int randomNummer = arc4random_uniform(range);
     
     // En dan gaan we kijken welk item staat op de random nummer in de array
-    NSString * vijand = [enemies objectAtIndex:randomNummer];
+    self.vijand = [enemies objectAtIndex:randomNummer];
     
     //NSLog(@"vijand %@", vijand);
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:vijand ofType:@"png" inDirectory:@"Enemies"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:self.vijand ofType:@"png" inDirectory:@"Enemies"];
     
-    SKSpriteNode *test = [SKSpriteNode spriteNodeWithImageNamed:path];
+    self.obj = [SKSpriteNode spriteNodeWithImageNamed:path];
     
-    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:test.size.width/2];
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.obj.size.width/2];
     self.physicsBody.dynamic = YES;
     self.physicsBody.affectedByGravity = NO;
-    self.physicsBody.categoryBitMask = dangerousCategory;
+    self.physicsBody.categoryBitMask = enemieCategory;
     self.physicsBody.contactTestBitMask = playerCategory;
     self.physicsBody.collisionBitMask = 0;
     
-    [self addChild:test];
+    [self addChild:self.obj];
+    
+    //default power
+    self.power = self.level/10;
+    
+    
 }
+
+-(void)addProjectile:(CGRect)frame{
+    
+    if ([self.vijand isEqualToString:@"ufo"]) {
+        
+        NSLog(@"add projectile");
+        //alleen in dit geval projectiel toevoegen
+        
+        Projectile * pr = [[Projectile alloc] init];
+        
+        [self addChild:pr];
+        
+        CGPoint location = CGPointMake(arc4random_uniform(frame.size.width*2)-self.position.x, -600);
+        SKAction *actionMove = [SKAction moveTo:location duration:2];
+        SKAction *actionMoveDone = [SKAction removeFromParent];
+        
+        [pr runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    }
+}
+
+// -------------------------------------
+// Action creeeren voor enemie
+// -------------------------------------
+
+/*-(SKAction*) actionForXPos:(int)xPos yPos:(int)yPos{
+ //laten bewegen adhv meegegeven x en y pos.
+ 
+ SKAction *moveLeft = [SKAction moveTo:CGPointMake(xPos - (arc4random_uniform(self.frame.size.width / 8 - 20) + 10), yPos) duration:arc4random_uniform(2) + 1];
+ SKAction *moveRight = [SKAction moveTo:CGPointMake(xPos + (arc4random_uniform(self.frame.size.width / 8 - 20) + 10), yPos) duration:arc4random_uniform(2) + 1];
+ SKAction *move = [SKAction sequence:@[moveLeft,moveRight]];
+ 
+ return move;
+ }*/
 
 @end

@@ -10,6 +10,7 @@
 		E85C10D8185496BF001A0883 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85C10D7185496BF001A0883 /* AVFoundation.framework */; };
 		E85C10DA185496EC001A0883 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85C10D9185496EC001A0883 /* CoreAudio.framework */; };
 		E88D1229185604CF005FD9A7 /* Enemies in Resources */ = {isa = PBXBuildFile; fileRef = E88D1228185604CF005FD9A7 /* Enemies */; };
+		EA2994AB18795327002965DA /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2994AA18795327002965DA /* Projectile.m */; };
 		EA3F10A1184F3F13007CD424 /* items in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109D184F3F13007CD424 /* items */; };
 		EA3F10A2184F3F13007CD424 /* player in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109E184F3F13007CD424 /* player */; };
 		EA3F10A3184F3F13007CD424 /* powerups in Resources */ = {isa = PBXBuildFile; fileRef = EA3F109F184F3F13007CD424 /* powerups */; };
@@ -53,6 +54,8 @@
 		E85C10D7185496BF001A0883 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E85C10D9185496EC001A0883 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		E88D1228185604CF005FD9A7 /* Enemies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Enemies; sourceTree = "<group>"; };
+		EA2994A918795327002965DA /* Projectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Projectile.h; sourceTree = "<group>"; };
+		EA2994AA18795327002965DA /* Projectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
 		EA3F109D184F3F13007CD424 /* items */ = {isa = PBXFileReference; lastKnownFileType = folder; path = items; sourceTree = "<group>"; };
 		EA3F109E184F3F13007CD424 /* player */ = {isa = PBXFileReference; lastKnownFileType = folder; path = player; sourceTree = "<group>"; };
 		EA3F109F184F3F13007CD424 /* powerups */ = {isa = PBXFileReference; lastKnownFileType = folder; path = powerups; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 			children = (
 				EA6698FB184BA9CD00AF6A87 /* Enemy.h */,
 				EA6698FC184BA9CD00AF6A87 /* Enemy.m */,
+				EA2994A918795327002965DA /* Projectile.h */,
+				EA2994AA18795327002965DA /* Projectile.m */,
 			);
 			name = Enemy;
 			sourceTree = "<group>";
@@ -437,6 +442,7 @@
 				EA66956418448E9B00AF6A87 /* AppDelegate.m in Sources */,
 				EA6698F4184B83D400AF6A87 /* Player.m in Sources */,
 				EA66956018448E9B00AF6A87 /* main.m in Sources */,
+				EA2994AB18795327002965DA /* Projectile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

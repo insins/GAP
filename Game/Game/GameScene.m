@@ -223,7 +223,7 @@
         second = contact.bodyA;
     }
     
-    if ((first.categoryBitMask & dangerousCategory) != 0 && (second.categoryBitMask & playerCategory) != 0) {
+    if ((first.categoryBitMask & enemieCategory) != 0 && (second.categoryBitMask & playerCategory) != 0) {
         //player(first) hits monster(second)
         
         Enemy *en = (Enemy*)first.node;
@@ -246,6 +246,12 @@
          
          [pl scaleBell:pl.size + bl.power];
          [bl removeFromParent];
+    }else if((first.categoryBitMask & dangerousCategory) != 0 && (second.categoryBitMask & playerCategory) != 0){
+         Projectile *pr = (Projectile*)first.node;
+         Player *pl = (Player*)self.player;
+         
+         [pl scaleBell:pl.size - pr.power];
+         [pr removeFromParent];
     }
 }
 
