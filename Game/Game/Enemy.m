@@ -49,7 +49,7 @@
    // Vijanden aanmaken
     // LEVEL 1
     NSString * haai = @"haai";
-    
+    NSString * skeletvis = @"skeletvis";
     
     // LEVEL 2
     NSString * vliegtuig = @"vliegtuig";
@@ -66,7 +66,7 @@
         case 1 :
             
             // Vijanden toevoegen in de array
-            enemies = [[NSMutableArray alloc] initWithObjects:haai, nil];
+            enemies = [[NSMutableArray alloc] initWithObjects:haai, skeletvis, nil];
             
             [self generateEnemies:enemies];
             
@@ -105,6 +105,8 @@
     
     self.obj = [SKSpriteNode spriteNodeWithImageNamed:path];
     
+    NSLog(@"size: %f", self.obj.size.width/2);
+    
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.obj.size.width/2];
     self.physicsBody.dynamic = YES;
     self.physicsBody.affectedByGravity = NO;
@@ -114,6 +116,16 @@
     
     [self addChild:self.obj];
     
+}
+
+-(void)shock{
+    [self.obj removeFromParent];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@S", self.vijand] ofType:@"png" inDirectory:@"Enemies"];
+    
+    self.obj = [SKSpriteNode spriteNodeWithImageNamed:path];
+    [self addChild:self.obj];
+    self.physicsBody = nil;
 }
 
 -(void)addProjectile:(CGRect)frame{

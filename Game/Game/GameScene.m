@@ -85,7 +85,7 @@
      
      self.nBell = [SKSpriteNode spriteNodeWithImageNamed:path];
      self.nBell.position = CGPointMake(self.size.width/2, -30);
-     [self.nBell setScale:.22];
+     [self.nBell setScale:.24];
      [self addChild:self.nBell];
      [self addChild:self.player];
 }
@@ -162,9 +162,9 @@
           
           if (self.level == 3) {
                self.bgPos++;
-               if (!(self.bgPos % (int)self.frame.size.height)) {
+               if (!(self.bgPos % ((int)self.frame.size.height-50))) {
                     Background * bg = (Background*)self.background;
-                    [bg addStarsAtPos:CGPointMake(self.frame.size.width, bg.starsStart + self.countUp2 * self.frame.size.height) ];
+                    [bg addStarsAtPos:CGPointMake(self.frame.size.width/2, bg.starsStart + self.countUp2 * self.frame.size.height) ];
                     self.countUp2++;
                }
           }
@@ -233,7 +233,7 @@
           
                p.level = self.level;
                
-               [p.bell setScale:.22];
+               [p.bell setScale:.24];
                p.size = 0;
                [self.nBell removeFromParent];
           

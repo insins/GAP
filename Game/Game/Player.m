@@ -56,7 +56,7 @@
     if (size == -1) {
         scale = [SKAction scaleTo:0.01 duration:.3];
     }else{
-        scale = [SKAction scaleTo:.22 + self.size * .28 duration:.3];
+        scale = [SKAction scaleTo:.24 + self.size * .28 duration:.3];
     }
     
     [self.bell runAction:scale completion:^(){
@@ -112,7 +112,7 @@
     
     [self removeAllChildren];
 
-    [self.bell setScale:.22 + self.size * .28];
+    [self.bell setScale:.24 + self.size * .28];
     [self resetPhysicsBody];
     
     [self addChild:self.bell];
