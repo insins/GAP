@@ -46,9 +46,22 @@
         rect.position = CGPointMake(0, height3 * .5 + height1 + height2);
         [self addChild:rect];
         
+        self.starsStart = height1 + height2;
+        
+        [self addStarsAtPos:CGPointMake(frame.size.width/2, height1 + height2 + frame.size.height/2)];
+        [self addStarsAtPos:CGPointMake(frame.size.width/2, height1 + height2 + frame.size.height + frame.size.height/2)];
         
     }
     return self;
+}
+
+-(void)addStarsAtPos:(CGPoint)p{
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"stars" ofType:@"png" inDirectory:@"elements"];
+    
+    SKSpriteNode * stars = [SKSpriteNode spriteNodeWithImageNamed:path];
+    stars.position = p;
+    
+    [self addChild:stars];
 }
 
 @end

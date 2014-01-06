@@ -38,6 +38,7 @@
 		EA6698FD184BA9CD00AF6A87 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6698FC184BA9CD00AF6A87 /* Enemy.m */; };
 		EA756A4418536A960069301E /* GameFinishedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA756A4318536A960069301E /* GameFinishedScene.m */; };
 		EAAD66AD187AA2EB00667707 /* Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAD66AC187AA2EB00667707 /* Gradient.m */; };
+		EAAD66AF187AC29A00667707 /* elements in Resources */ = {isa = PBXBuildFile; fileRef = EAAD66AE187AC29A00667707 /* elements */; };
 		EAEA226918671F8900213571 /* Bell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEA226818671F8900213571 /* Bell.m */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		EA756A4318536A960069301E /* GameFinishedScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameFinishedScene.m; sourceTree = "<group>"; };
 		EAAD66AB187AA2EB00667707 /* Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gradient.h; sourceTree = "<group>"; };
 		EAAD66AC187AA2EB00667707 /* Gradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gradient.m; sourceTree = "<group>"; };
+		EAAD66AE187AC29A00667707 /* elements */ = {isa = PBXFileReference; lastKnownFileType = folder; path = elements; sourceTree = "<group>"; };
 		EAEA226718671F8900213571 /* Bell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bell.h; sourceTree = "<group>"; };
 		EAEA226818671F8900213571 /* Bell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +233,7 @@
 		EA3F1084184F2085007CD424 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EAAD66AE187AC29A00667707 /* elements */,
 				E88D1228185604CF005FD9A7 /* Enemies */,
 				EA3F109D184F3F13007CD424 /* items */,
 				EA3F109E184F3F13007CD424 /* player */,
@@ -414,6 +417,7 @@
 				EA3F10A2184F3F13007CD424 /* player in Resources */,
 				EA66957118448E9B00AF6A87 /* Images.xcassets in Resources */,
 				E88D1229185604CF005FD9A7 /* Enemies in Resources */,
+				EAAD66AF187AC29A00667707 /* elements in Resources */,
 				EA3F10A3184F3F13007CD424 /* powerups in Resources */,
 				EA66956718448E9B00AF6A87 /* Main.storyboard in Resources */,
 			);

@@ -36,6 +36,8 @@
          self.max = 8;
          //teller telt op als er object op scherm komt
         self.countUp = 0;
+         //counter om sterren toe te voegen aan bg
+         self.countUp2=2;
          
          //booleans om op te checken in update functie
          self.blowBells = YES;
@@ -114,6 +116,8 @@
     SKTransition *reveal = [SKTransition pushWithDirection:SKTransitionDirectionDown duration:0.5];
     SKScene *gfScene = [[GameFinishedScene alloc] initWithSize:self.frame.size score:self.score];
     [self.view presentScene:gfScene transition:reveal];
+     
+     [(World*)self.world pauzeer];
 }
 
 // --------------------------------------
@@ -155,6 +159,16 @@
           //Move bg en world
           self.world.position = CGPointMake(self.world.position.x, self.world.position.y - 1);
           self.background.position = CGPointMake(self.background.position.x, self.background.position.y - 1);
+          
+          if (self.level == 3) {
+               self.bgPos++;
+               if (!(self.bgPos % (int)self.frame.size.height)) {
+                    Background * bg = (Background*)self.background;
+                    [bg addStarsAtPos:CGPointMake(self.frame.size.width, bg.starsStart + self.countUp2 * self.frame.size.height) ];
+                    self.countUp2++;
+               }
+          }
+          
           self.yPos++;
     
           //om de zoveel tijd een nieuwe enemie/item toevoegen aan world
@@ -167,7 +181,7 @@
                self.countUp ++;
                
                Player* pl = (Player*)self.player;
-               [pl scaleBell:pl.size-.05];
+               [pl scaleBell:pl.size-.2/3];
                
                if (self.countUp == self.max && self.level < 3){
                     //naar volgend level gaan. alle waarden terugzetten

@@ -36,6 +36,8 @@
 
 @property (nonatomic) int countUp;
 @property (nonatomic) int yPos;
+@property (nonatomic) int countUp2;
+@property (nonatomic) int bgPos;
 @property (nonatomic) int interval;
 @property (nonatomic) int difficulty;
 @property (nonatomic) int max;

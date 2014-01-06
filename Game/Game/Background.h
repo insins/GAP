@@ -11,6 +11,9 @@
 
 @interface Background : SKNode
 
+@property (nonatomic) int starsStart;
+
 -(id)initWithMaxObjects:(int)m andFrame:(CGRect)frame;
+-(void)addStarsAtPos:(CGPoint)p;
 
 @end
