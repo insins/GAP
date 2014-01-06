@@ -73,10 +73,21 @@
     
         [self addChild:self.nmy];
     
-        if (self.timer == nil && self.level == 1) {
+        if (self.timer == nil && self.level == 3) {
             self.timer = [NSTimer scheduledTimerWithTimeInterval: 3.5 target: self selector: @selector(addProjectile:) userInfo: nil repeats: YES];
         }
     
+}
+
+-(void)pauzeer{
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+-(void)resume{
+    if (self.timer == nil && self.level == 3) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval: 3.5 target: self selector: @selector(addProjectile:) userInfo: nil repeats: YES];
+    }
 }
 
 -(void)addProjectile:(NSTimer *)timer{

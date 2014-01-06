@@ -27,6 +27,10 @@
         
         //+physicsbody instellen
         
+        //default power
+        
+        self.power = (float)self.level/10;
+        
     }
     
     return self;
@@ -109,10 +113,6 @@
     self.physicsBody.collisionBitMask = 0;
     
     [self addChild:self.obj];
-    
-    //default power
-    self.power = self.level/10;
-    
     
 }
 

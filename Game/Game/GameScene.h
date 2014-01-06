@@ -31,11 +31,14 @@
 @property (nonatomic) double lowPassResults;
 
 @property (nonatomic) BOOL blowBells;
+@property (nonatomic) BOOL pauze;
+@property (nonatomic) BOOL animate;
 
 @property (nonatomic) int countUp;
 @property (nonatomic) int yPos;
 @property (nonatomic) int interval;
 @property (nonatomic) int difficulty;
+@property (nonatomic) int max;
 
 @property (nonatomic) int score;
 @property (nonatomic) int level;

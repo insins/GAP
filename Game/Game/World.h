@@ -23,6 +23,8 @@
 -(void)updateObjects;
 -(void)updateBubbles;
 -(id)initWithFrame:(CGRect)frame;
+-(void)pauzeer;
+-(void)resume;
 
 - (int)level;
 - (void)setLevel:(int)level;

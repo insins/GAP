@@ -25,14 +25,21 @@
         self.world = [[World alloc] initWithFrame:self.frame];
         self.level = 1;
         
-        self.backgroundColor = [SKColor whiteColor];
+        self.backgroundColor = [UIColor colorWithRed:3.0/255.0 green:14.0/255.0 blue:19.0/255.0 alpha:1.0];
         
         self.frequency = 60;
         
         self.interval = 200;
+         //adhv difficulty wordt interval aangepast (dus bij hoger level komen enemies sneller op scherm)
         self.difficulty = self.level * 100;
+         //aantal objecten die moeten verschijnen voordat je naar volgend level gaat (om te testen staat dit op geen al te hoog getal ;) )
+         self.max = 8;
+         //teller telt op als er object op scherm komt
         self.countUp = 0;
+         
+         //booleans om op te checken in update functie
          self.blowBells = YES;
+         self.pauze = NO;
         
         // --------------------------------------
         // motionmanager instellen
@@ -50,7 +57,7 @@
          self.player = [[Player alloc] init];
          self.player.position = CGPointMake(self.frame.size.width/2,100);
          
-        self.background = [[Background alloc] init];
+         self.background = [[Background alloc] initWithMaxObjects:self.max andFrame:self.frame];
         
          [self addChild:self.background];
          [self addChild:self.world];
@@ -81,6 +88,21 @@
      [self addChild:self.player];
 }
 
+//deze functie wordt uitgevoerd als op pauze wordt gedrukt
+
+-(void)pauzeer{
+     NSLog(@"pauzeer");
+     [(World*)self.world pauzeer];
+     self.pauze = YES;
+}
+
+//deze functie wordt uitgevoerd als je weer uit menu gaat
+
+-(void)resume{
+     [(World*)self.world resume];
+     self.pauze = NO;
+}
+
 // --------------------------------------
 // Toon de gameover scene
 // --------------------------------------
@@ -104,6 +126,8 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+     if (!self.pauze) {
+     
      if (!self.blowBells) {
           
           CMDeviceMotion *currMotion = self.motionManager.deviceMotion;
@@ -130,11 +154,10 @@
     
           //Move bg en world
           self.world.position = CGPointMake(self.world.position.x, self.world.position.y - 1);
+          self.background.position = CGPointMake(self.background.position.x, self.background.position.y - 1);
           self.yPos++;
     
           //om de zoveel tijd een nieuwe enemie/item toevoegen aan world
-     
-          int max = 8;
           
           if (!(self.yPos % self.interval)){
                self.yPos = 1;
@@ -144,19 +167,18 @@
                self.countUp ++;
                
                Player* pl = (Player*)self.player;
-               [pl scaleBell:pl.size-.1];
+               [pl scaleBell:pl.size-.05];
                
-               if (self.countUp == max && self.level < 3){
+               if (self.countUp == self.max && self.level < 3){
                     //naar volgend level gaan. alle waarden terugzetten
                     self.level++;
                     self.difficulty = self.level * 100;
                     self.countUp = 0;
                     self.blowBells = YES;
+                    self.animate = YES;
                     
                     [self resetBellAndPlayer];
-                    
-                    NSLog(@"pause");
-               }else if(self.countUp != max - 1){
+               }else if(self.countUp != self.max - 1){
                     if (!(self.countUp % 4)) {
                          [(World*)self.world updateBubbles];
                     }else{
@@ -170,6 +192,7 @@
           
           Player *p = (Player*) self.player;
           World *w = (World*) self.world;
+          Background *b = (Background*) self.background;
           
           self.blowBells = YES;
           
@@ -177,9 +200,17 @@
           
           [p runAction:movePlayer];
           
-          SKAction * moveWorld = [SKAction moveTo:CGPointMake(self.world.position.x, self.world.position.y - self.frame.size.height) duration:2];
-          
-          [w runAction:moveWorld];
+          if (self.animate) {
+               SKAction * moveWorld = [SKAction moveTo:CGPointMake(self.world.position.x, self.world.position.y - self.frame.size.height) duration:2];
+               
+               [w runAction:moveWorld];
+               
+               SKAction * moveBg = [SKAction moveTo:CGPointMake(self.background.position.x, self.background.position.y - self.frame.size.height/2) duration:.3];
+               
+               [b runAction:moveBg completion:^(){
+                    self.animate = NO;
+               }];
+          }
           
           SKAction * moveNewBell = [SKAction moveTo:CGPointMake(self.frame.size.width / 2, 200) duration:.2];
           SKAction * wait = [SKAction waitForDuration:1];
@@ -193,6 +224,7 @@
                [self.nBell removeFromParent];
           
           }];
+     }
      }
 }
 
@@ -224,7 +256,7 @@
     }
     
     if ((first.categoryBitMask & enemieCategory) != 0 && (second.categoryBitMask & playerCategory) != 0) {
-        //player(first) hits monster(second)
+        //monster(first) hits player(second)
         
         Enemy *en = (Enemy*)first.node;
         Player *pl = (Player*)self.player;

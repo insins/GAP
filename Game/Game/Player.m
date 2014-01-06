@@ -26,7 +26,7 @@
         path = [[NSBundle mainBundle] pathForResource:@"lv1bell" ofType:@"png" inDirectory:@"player"];
         
         self.bell = [SKSpriteNode spriteNodeWithImageNamed:path];
-        [self.bell setScale:.1];
+        [self.bell setScale:0.01];
         self.size = -1;
         [self resetPhysicsBody];
         
@@ -54,7 +54,7 @@
     SKAction *scale;
     
     if (size == -1) {
-        scale = [SKAction scaleTo:.1 duration:.3];
+        scale = [SKAction scaleTo:0.01 duration:.3];
     }else{
         scale = [SKAction scaleTo:.22 + self.size * .28 duration:.3];
     }
@@ -89,7 +89,7 @@
     self.physicsBody.dynamic = YES;
     self.physicsBody.affectedByGravity = NO;
     self.physicsBody.categoryBitMask = playerCategory;
-    self.physicsBody.contactTestBitMask = dangerousCategory;
+    self.physicsBody.contactTestBitMask = enemieCategory;
     self.physicsBody.collisionBitMask = 0;
     self.physicsBody.usesPreciseCollisionDetection = YES;
 }

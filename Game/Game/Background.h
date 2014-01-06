@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Gradient.h"
 
 @interface Background : SKNode
+
+-(id)initWithMaxObjects:(int)m andFrame:(CGRect)frame;
 
 @end
