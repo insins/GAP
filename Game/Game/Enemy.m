@@ -10,7 +10,7 @@
 
 @implementation Enemy
 
--(id)initWithLevel:(int)level{
+-(id)initWithLevel:(int)level side:(int)s width:(int)w pos:(CGPoint)p{
     if (self = [super init]) {
         // ---------------------
         // RANDOM ENEMIES PER LEVEL
@@ -18,6 +18,11 @@
         
         // Aan de hand van het level zullen de enemies aangemaakt worden
         self.level = level;
+        self.side = s;
+        self.width = w;
+        self.position = p;
+        
+        NSLog(@"position %f", p.x);
         
         // Testen voor een enemy aan te maken
         [self createEnemy];
@@ -49,16 +54,23 @@
    // Vijanden aanmaken
     // LEVEL 1
     NSString * haai = @"haai";
+    SKPhysicsBody * haaiF = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(88, 36)];
     NSString * skeletvis = @"skeletvis";
+    SKPhysicsBody * skeletvisF = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(42, 15)];
     
     // LEVEL 2
     NSString * vliegtuig = @"vliegtuig";
+    SKPhysicsBody * vliegtuigF = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(73, 32)];
     NSString * meeuw = @"meeuw";
+    SKPhysicsBody * meeuwF = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(54, 23)];
     
     // LEVEL 3
     NSString * satteliet = @"satelliet";
+    SKPhysicsBody * sattelietF = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(58, 33)];
     NSString * meteoriet = @"meteoriet";
+    SKPhysicsBody * meteorietF = [SKPhysicsBody bodyWithCircleOfRadius:16];
     NSString * ufo = @"ufo";
+    SKPhysicsBody * ufoF = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(62, 37)];
     
     // Eerst een switch schrijven die checkt in welk level je zit. 1 = 1e zone, 2 = 2e zone, 3 = 3e zone
     switch (self.level){
@@ -66,7 +78,7 @@
         case 1 :
             
             // Vijanden toevoegen in de array
-            enemies = [[NSMutableArray alloc] initWithObjects:haai, skeletvis, nil];
+            enemies = [[NSMutableArray alloc] initWithObjects:@[haai, haaiF], @[skeletvis, skeletvisF], nil];
             
             [self generateEnemies:enemies];
             
@@ -74,14 +86,14 @@
             
         case 2:
             
-            enemies = [[NSMutableArray alloc] initWithObjects:vliegtuig, meeuw, nil];
+            enemies = [[NSMutableArray alloc] initWithObjects:@[vliegtuig, vliegtuigF], @[meeuw, meeuwF], nil];
             
             [self generateEnemies:enemies];
             break;
             
         case 3:
             
-            enemies = [[NSMutableArray alloc] initWithObjects:satteliet, meteoriet, ufo, nil];
+            enemies = [[NSMutableArray alloc] initWithObjects:@[satteliet, sattelietF], @[meteoriet, meteorietF], @[ufo, ufoF], nil];
             
             [self generateEnemies:enemies];
             break;
@@ -97,7 +109,9 @@
     int randomNummer = arc4random_uniform(range);
     
     // En dan gaan we kijken welk item staat op de random nummer in de array
-    self.vijand = [enemies objectAtIndex:randomNummer];
+    NSArray* vijandInfo = [enemies objectAtIndex:randomNummer];
+    
+    self.vijand = [vijandInfo objectAtIndex:0];
     
     //NSLog(@"vijand %@", vijand);
     
@@ -105,9 +119,7 @@
     
     self.obj = [SKSpriteNode spriteNodeWithImageNamed:path];
     
-    NSLog(@"size: %f", self.obj.size.width/2);
-    
-    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.obj.size.width/2];
+    self.physicsBody = [vijandInfo objectAtIndex:1];
     self.physicsBody.dynamic = YES;
     self.physicsBody.affectedByGravity = NO;
     self.physicsBody.categoryBitMask = enemieCategory;
@@ -115,6 +127,8 @@
     self.physicsBody.collisionBitMask = 0;
     
     [self addChild:self.obj];
+    
+    [self runAction:[self actionForType:self.vijand]];
     
 }
 
@@ -151,14 +165,27 @@
 // Action creeeren voor enemie
 // -------------------------------------
 
-/*-(SKAction*) actionForXPos:(int)xPos yPos:(int)yPos{
+-(SKAction*) actionForType:(NSString*)type{
  //laten bewegen adhv meegegeven x en y pos.
  
- SKAction *moveLeft = [SKAction moveTo:CGPointMake(xPos - (arc4random_uniform(self.frame.size.width / 8 - 20) + 10), yPos) duration:arc4random_uniform(2) + 1];
- SKAction *moveRight = [SKAction moveTo:CGPointMake(xPos + (arc4random_uniform(self.frame.size.width / 8 - 20) + 10), yPos) duration:arc4random_uniform(2) + 1];
- SKAction *move = [SKAction sequence:@[moveLeft,moveRight]];
+    int xPos = 0;
+    int yPos = 0;
+    int dur = 0;
+    
+    if (self.side == -1) {
+        xPos = self.width + 100;
+    }else{
+        xPos = -100;
+    }
+    
+    yPos = self.position.y;
+    
+    dur = arc4random_uniform(4) + 2;
+    
+    SKAction *wait = [SKAction waitForDuration:2];
+    SKAction *move = [SKAction moveTo:CGPointMake(xPos, yPos) duration:dur];
  
- return move;
- }*/
+    return [SKAction sequence:@[wait, move]];
+ }
 
 @end

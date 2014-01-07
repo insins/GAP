@@ -12,11 +12,13 @@
 @interface Enemy : SKNode
 
 @property (nonatomic) int level;
+@property (nonatomic) int side;
+@property (nonatomic) int width;
 @property (nonatomic) float power;
 @property (nonatomic, strong) NSString * vijand;
 @property (nonatomic, strong) SKSpriteNode *obj;
 
--(id)initWithLevel:(int)level;
+-(id)initWithLevel:(int)level side:(int)s width:(int)w pos:(CGPoint)p;
 -(void)createEnemy;
 -(void)addProjectile:(CGRect)frame;
 

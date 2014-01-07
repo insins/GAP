@@ -45,16 +45,19 @@
     
     int lr = (arc4random() % 2 ? 1 : -1);
     
-    int xPos = (lr * self.frame.size.width) / 4 + self.frame.size.width / 2;
-    int yPos = self.frame.size.height - self.position.y + 30;
+    int xPos = self.frame.size.width / 2 + lr * (self.frame.size.width / 2) + lr * 100;
     
-    int xPos2 = (-lr * self.frame.size.width) / 4 + self.frame.size.width / 2;
-    int yPos2 = (arc4random() % 2 ? 1 : -1) * arc4random_uniform(20) + 10 + yPos + 30;
+    NSLog(@"xPos: %i", xPos);
+    
+    int yPos = self.frame.size.height - self.position.y + 30;
     
     if (self.luck <= 2) {
         //good luck: power aan stage toevoegen
         
         //item aanmaken en toevoegen aan stage
+        int xPos2 = (-lr * self.frame.size.width) / 4 + self.frame.size.width / 2;
+        int yPos2 = (arc4random() % 2 ? 1 : -1) * arc4random_uniform(40) + 20 + yPos;
+        
         SKNode *pwr = [self nodeWithType:@"p" xPos:xPos2 yPos:yPos2];
         [self addChild:pwr];
         
@@ -123,12 +126,18 @@
     SKNode *obj;
     
     if([type isEqualToString:@"e"]){
-        obj = [[Enemy alloc] initWithLevel:self.level];
+        if (xPos == self.frame.size.width / 2 + (self.frame.size.width / 2) + 100) {
+            obj = [[Enemy alloc] initWithLevel:self.level side:1 width:self.frame.size.width pos:CGPointMake(xPos, yPos)];
+        }else{
+            obj = [[Enemy alloc] initWithLevel:self.level side:-1 width:self.frame.size.width pos:CGPointMake(xPos, yPos)];
+        }
+        
     }else{
         obj = [[Power alloc] init];
+        obj.position = CGPointMake(xPos, yPos);
     }
     
-    obj.position = CGPointMake(xPos, yPos);
+    
     
     return obj;
 }
